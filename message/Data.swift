@@ -6,7 +6,6 @@ struct Participant: Identifiable, Equatable, Hashable {
     let lastName: String
     let username: String
     let profileImageLink: URL?
-    
     var name: PersonNameComponents {
         PersonNameComponents(
             givenName: self.firstName,
@@ -22,18 +21,21 @@ let sampleParticipantJohn = Participant(
     username: "username_for_John",
     profileImageLink: URL(string: "https://this-person-does-not-exist.com/img/avatar-gen08619ad3edb628d04b45cea6a487c665.jpg")
 )
+
 let sampleParticipantJane = Participant(
     firstName: "Jane",
     lastName: "Doe",
     username: "username_for_Jane",
     profileImageLink: nil
 )
+
 let sampleParticipantAlex = Participant(
     firstName: "Alex",
     lastName: "Smith",
     username: "username_for_Alex",
     profileImageLink: nil
 )
+
 let sampleLoggedInUser = sampleParticipantJohn
 let sampleMessageHelloWorldJohn = Message(text: "Hello World", createdAt: .now, author: sampleParticipantJohn)
 let sampleMessageHelloWorldJane = Message(text: "Hello World", createdAt: .now, author: sampleParticipantJane)
@@ -45,6 +47,7 @@ let sampleConversation = Conversation(
     isPinned: true,
     profileImageLink: nil
 )
+
 let sampleLongConversation = Conversation(
     participants: [sampleParticipantJohn, sampleParticipantJane],
     messages: sampleMessages,
@@ -53,6 +56,7 @@ let sampleLongConversation = Conversation(
     isPinned: true,
     profileImageLink: nil
 )
+
 let sampleGroupConversation = Conversation(
     participants: [sampleParticipantJohn, sampleParticipantJane, sampleParticipantAlex],
     messages: sampleGroupMessage,
@@ -61,6 +65,7 @@ let sampleGroupConversation = Conversation(
     isPinned: true,
     profileImageLink: nil
 )
+
 let sampleMessages = [
     Message(text: "Hey Johnny, what's up?", createdAt: .now, author: sampleParticipantJohn),
     Message(text: "Nothing much, how about you?", createdAt: .now, author: sampleParticipantJane),
@@ -96,7 +101,6 @@ struct Conversation: Identifiable, Hashable {
     let isRead: Bool
     let isPinned: Bool
     let profileImageLink: String?
-    
     func particpantsNotIncludingCurrentUser() -> [Participant] {
         return participants.filter { $0 != sampleLoggedInUser }
     }

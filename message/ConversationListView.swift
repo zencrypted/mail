@@ -28,7 +28,7 @@ struct ConversationListView: View {
         self._selectedConversation = selectedConversation
         self.isShowingNewMessageView = isShowingNewMessageView
     }
-    
+
     var body: some View {
         List(filteredConversations, selection: $selectedConversation) { conversation in
             ConversationListCell(conversation: conversation)

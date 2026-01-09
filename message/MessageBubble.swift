@@ -115,7 +115,7 @@ func ImageAttachmentView(_ thumbnail: Image, isFromYou: Bool, shouldSendInTheFut
             return Color.primary
         }
     }
-    
+
     thumbnail
         .resizable()
         .scaledToFit()
@@ -138,7 +138,7 @@ func VideoAttachmentView(_ thumbnail: Image, isFromYou: Bool, shouldSendInTheFut
             return Color.primary
         }
     }
-    
+
     ZStack {
         thumbnail
             .resizable()
@@ -149,7 +149,7 @@ func VideoAttachmentView(_ thumbnail: Image, isFromYou: Bool, shouldSendInTheFut
                     .stroke(Color.blue, style: StrokeStyle(dash: [shouldSendInTheFuture ? 6 : 0]))
                     .rotation3DEffect(isFromYou ? .degrees(0) : .degrees(180), axis: (x: 0, y: 1, z: 0))
             )
-        
+
         Image(systemName: "play.fill")
             .resizable()
             .scaledToFit()
@@ -172,6 +172,7 @@ func OtherAttachmentView(_ thumbnail: Image, fileName: String, docType: String, 
             return Color.secondary.opacity(0.2)
         }
     }
+
     var forgroundColor: Color {
         if shouldSendInTheFuture {
             return Color.blue
@@ -181,10 +182,10 @@ func OtherAttachmentView(_ thumbnail: Image, fileName: String, docType: String, 
             return Color.primary
         }
     }
-    
+
     HStack {
         thumbnail
-        
+
         VStack {
             Text(fileName).bold()
             HStack {

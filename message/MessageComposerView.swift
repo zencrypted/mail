@@ -9,7 +9,7 @@ struct MessageComposerView: View {
     let attachmentPickerAnimation: Namespace.ID
     @Binding var attachments: [Attachment]
     @Bindable var photoSelectorVM: PhotoSelectorViewModel
-    
+
     var body: some View {
         HStack(alignment: .bottom) {
             Button {
@@ -21,10 +21,8 @@ struct MessageComposerView: View {
                     .imageScale(.large)
             }
             .matchedGeometryEffect(id: matchingGeometryID, in: attachmentPickerAnimation, isSource: true)
-            // to learn more checkout https://medium.com/@jpmtech/using-matchedgeometryeffect-in-swiftui-d9d5542c5a4d
-            
+
             VStack(spacing: 0) {
-                // MARK: Attachments list
                 if !photoSelectorVM.images.isEmpty {
                     ScrollView(.horizontal) {
                         LazyHGrid(rows: [GridItem(.fixed(100))]) {
@@ -57,7 +55,6 @@ struct MessageComposerView: View {
                             .roundedCornerWithBorder(borderColor: .secondary, radius: 8, corners: [.topLeft, .topRight])
                     }
                 }
-                
                 TextField("Message Input", text: $messageText, prompt: Text("Message"), axis: .vertical)
                     .padding(4)
                     .overlay {
@@ -70,7 +67,6 @@ struct MessageComposerView: View {
                             )
                     }
             }
-            
             if messageText.isEmpty {
                 EmptyView()
             } else {
@@ -87,7 +83,6 @@ struct MessageComposerView: View {
 
 #Preview {
     @Previewable @Namespace var attachmentPickerAnimation
-    
     MessageComposerView(
         messageText: .constant(""),
         isShowingAttachmentPicker: .constant(false),
