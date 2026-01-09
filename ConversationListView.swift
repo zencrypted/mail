@@ -4,8 +4,7 @@ import SwiftUI
 
 struct ConversationListView: View {
     let conversations: [Conversation]
-    @Binding var selectedConversation: Conversation?
-    @State var isShowingNewMessageView = false
+    @Binding var selection: SidebarSelection?
     @State var textToSearch = ""
 
     var filteredConversations: [Conversation] {
@@ -21,54 +20,51 @@ struct ConversationListView: View {
 
     init(
         conversations: [Conversation],
-        selectedConversation: Binding<Conversation?>,
-        isShowingNewMessageView: Bool = false
+        selection: Binding<SidebarSelection?>
     ) {
         self.conversations = conversations
-        self._selectedConversation = selectedConversation
-        self.isShowingNewMessageView = isShowingNewMessageView
+        self._selection = selection
     }
     
     var body: some View {
-        List(filteredConversations, selection: $selectedConversation) { conversation in
-            ConversationListCell(conversation: conversation)
-                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                    Button {
-                        // mark conversation as unread
-                    } label: {
-                        Image(systemName: "message.badge")
+        List(selection: $selection) {
+            ForEach(filteredConversations) { conversation in
+                ConversationListCell(conversation: conversation)
+                    .tag(SidebarSelection.conversation(conversation))
+                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                        Button {
+                            // mark conversation as unread
+                        } label: {
+                            Image(systemName: "message.badge")
+                        }
+                        .tint(.blue)
                     }
-                    .tint(.blue)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button {
-                        // Delete conversation
-                    } label: {
-                        Image(systemName: "trash")
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button {
+                            // Delete conversation
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .tint(.red)
+                        Button {
+                            // turn of notifications
+                        } label: {
+                            Image(systemName: "bell.slash")
+                        }
+                        .tint(.purple)
                     }
-                    .tint(.red)
-                    Button {
-                        // turn of notifications
-                    } label: {
-                        Image(systemName: "bell.slash")
-                    }
-                    .tint(.purple)
-                }
-                .onTapGesture {
-                    selectedConversation = conversation
-                }
+            }
         }
         .searchable(text: $textToSearch)
         .navigationTitle("Messages")
         .toolbar {
-            ToolbarItem {
-                Button("New Conversation", systemImage: "square.and.pencil") {
-                    isShowingNewMessageView.toggle()
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    selection = .newMessage
+                } label: {
+                    Image(systemName: "square.and.pencil")
                 }
             }
-        }
-        .sheet(isPresented: $isShowingNewMessageView) {
-            NewMessage(isPresented: $isShowingNewMessageView)
         }
     }
 }
@@ -79,6 +75,6 @@ struct ConversationListView: View {
             sampleConversation,
             sampleConversation,
             sampleConversation
-        ], selectedConversation: .constant(nil))
+        ], selection: .constant(nil))
     }
 }

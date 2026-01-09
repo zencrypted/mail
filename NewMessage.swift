@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct NewMessage: View {
-    @Binding var isPresented: Bool
+    @Binding var selection: SidebarSelection?
     @State var to = ""
     @State var message = ""
     @State var attachments = [Attachment]()
@@ -14,19 +14,6 @@ struct NewMessage: View {
 
     var body: some View {
         VStack {
-            ZStack {
-                Text("New Message")
-                    .font(.system(size: 17, weight: .semibold))
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .overlay(alignment: .trailing) {
-                Button("Cancel") {
-                    isPresented.toggle()
-                }
-                .padding(.trailing)
-            }
-            .background(.ultraThinMaterial)
             VStack {
                 HStack {
                     TextField("To:", text: $to)
@@ -50,6 +37,8 @@ struct NewMessage: View {
             )
             .padding([.horizontal, .bottom])
         }
+        .navigationTitle("New Message")
+        .navigationBarTitleDisplayMode(.inline)
         .overlay {
             if isShowingAttachmentPicker {
                 AddAttachmentsView(
@@ -65,6 +54,6 @@ struct NewMessage: View {
 
 #Preview {
     NavigationStack {
-        NewMessage(isPresented: .constant(true))
+        NewMessage(selection: .constant(.newMessage))
     }
 }

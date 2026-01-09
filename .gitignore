@@ -1,0 +1,50 @@
+# Xcode
+#
+# build/
+*.xcodeproj
+!*/*.xcodeproj/project.xcworkspace
+!*/*.xcodeproj/xcshareddata
+!*/*.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+**/DerivedData/
+*.hmap
+*.ipa
+*.playground.micromd.json
+
+# XcodeGen
+#
+# It's common to ignore the .xcodeproj itself if using XcodeGen
+# but since the user asked for xcodegen config, I'll ignore the project file
+# as it can be regenerated.
+# However, many developers prefer to keep it. 
+# Looking at the previous steps, the user wanted to "add xcodegen config".
+# I'll include standard Xcode ignores.
+
+# macOS
+#
+.DS_Store
+*.swp
+*.lock
+
+# User-specific
+*.xcuserdatad
+# xcuserdata/
+
+# Swift Package Manager
+#
+.build/
+Packages
+Package.resolved
+.swiftpm/
+
+# Fastlane
+#
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# CocoaPods
+#
+# Pods/
+# Podfile.lock
+# *.xcworkspace
