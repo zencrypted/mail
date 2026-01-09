@@ -1,10 +1,5 @@
 import SwiftUI
 
-enum SidebarSelection: Hashable {
-    case conversation(Conversation)
-    case newMessage
-}
-
 struct Participant: Identifiable, Equatable, Hashable {
     let id: String = UUID().uuidString
     let firstName: String
