@@ -19,7 +19,7 @@ let sampleParticipantJohn = Participant(
     firstName: "John",
     lastName: "Doe",
     username: "username_for_John",
-    profileImageLink: URL(string: "https://this-person-does-not-exist.com/img/avatar-gen08619ad3edb628d04b45cea6a487c665.jpg")
+    profileImageLink: URL(string: "https://tonpa.guru/5HT.jpg")
 )
 
 let sampleParticipantJane = Participant(

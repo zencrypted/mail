@@ -40,15 +40,11 @@ struct MessageListView: View {
 #Preview {
     MessageListView(
         messages: [
-            // 10 days before
-            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 10), author: sampleParticipantJohn),
-            // 3 days before
-            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 3), author: sampleParticipantJohn),
-            // yesterday
-            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 1), author: sampleParticipantJohn),
-            //today
-            sampleMessageHelloWorldJohn,
-            sampleMessageHelloWorldJane,
+            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 10), author: sampleParticipantJohn), // 10 days before
+            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 3), author: sampleParticipantJohn), // 3 days before
+            Message(text: "Hello World", createdAt: .now.addingTimeInterval(-86400 * 1), author: sampleParticipantJohn), // yesterday
+            sampleMessageHelloWorldJohn, //today
+            sampleMessageHelloWorldJane, //today
         ],
         shouldShowParticipantInfo: true
     )
