@@ -59,7 +59,7 @@ struct ConversationListView: View {
                 }
         }
         .searchable(text: $textToSearch)
-        .navigationTitle("Messages")
+        .navigationTitle("Conversations")
         .toolbar {
             ToolbarItem {
                 Button("New Conversation", systemImage: "square.and.pencil") {
