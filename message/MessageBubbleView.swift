@@ -43,5 +43,6 @@ struct MessageBubbleView: View {
         MessageBubbleView(sampleMessageHelloWorldJohn, shouldShowParticipantInfo: true)
         MessageBubbleView(sampleMessageHelloWorldJane, shouldShowParticipantInfo: true)
         MessageBubbleView(sampleMessageHelloWorldJane, shouldShowParticipantInfo: false)
+        MessageBubbleView(sampleMessageHelloWorldJane, shouldShowParticipantInfo: false)
     }
 }
