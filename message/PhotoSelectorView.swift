@@ -25,7 +25,7 @@ struct PhotoSelectorView: View {
                 .onChange(of: selectedItems) {
                     Task {
                         let datas = await loadDatas(from: selectedItems)
-                        await viewModel.addImages(from: datas)
+                        viewModel.addImages(from: datas)
                     }
                 }
             #elseif os(macOS)

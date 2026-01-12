@@ -1,7 +1,38 @@
 import SwiftUI
 
+enum Topic: String, Codable, CaseIterable, Identifiable {
+    case control        = "npg.control"         // 1  — announcements, key exchange
+    case pli            = "npg.pli"             // 6  — position/velocity (probably not for chat app)
+    case surveillance   = "npg.surveillance"    // 7
+    case chat           = "npg.chat"            // 28 — main public P2P chat
+    case tactical       = "npg.tactical"        // 29 — group/tactical chat + acks
+    case c2             = "npg.c2"              // 100
+    case alerts         = "npg.alerts"          // 101
+    case logistics      = "npg.logistics"       // 102
+    case coord          = "npg.coord"           // 103
+    var id: String { rawValue }
+    var displayName: String {
+        switch self {
+        case .control:      "Discovery"
+        case .pli:          "Position Data"
+        case .surveillance: "Surveillance"
+        case .chat:         "Public Chat"
+        case .tactical:     "Tactical / Group"
+        case .c2:           "Command & Control"
+        case .alerts:       "Alerts"
+        case .logistics:    "Logistics"
+        case .coord:        "Coordination"
+        }
+    }
+}
+
 struct Participant: Identifiable, Equatable, Hashable {
     let id: String = UUID().uuidString
+    var displayName: String?
+    var avatarURL: URL?
+    var lastSeen: Date?
+    var topics: Set<Topic> = []      // which channels this peer is listening/publishing to
+    var isOnline: Bool { Date.now.timeIntervalSince(lastSeen ?? .distantPast) < 300 }
     let firstName: String
     let lastName: String
     let username: String
@@ -100,6 +131,7 @@ struct Conversation: Identifiable, Hashable {
     let updatedAt: Date
     let isRead: Bool
     let isPinned: Bool
+    let isGroupChat: Bool = true
     let profileImageLink: String?
     func particpantsNotIncludingCurrentUser() -> [Participant] {
         return participants.filter { $0 != sampleLoggedInUser }
@@ -112,8 +144,8 @@ struct Message: Identifiable, Hashable {
     let createdAt: Date
     let updatedAt = Date()
     let author: Participant
-    let attachments: Attachment? = nil
-    let reactions: [Reaction] = []
+    let attachments: [Attachment]? = []
+    let reactions: [Reaction]? = []
 }
 
 struct Attachment: Identifiable, Hashable {
@@ -138,7 +170,6 @@ struct Thumbnail: Hashable {
     let height: Int
     let url: String
 }
-
 
 struct Reaction: Identifiable, Hashable {
     let id: UUID
