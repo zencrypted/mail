@@ -26,22 +26,15 @@ actor MessagePeer {
     }
     
     static func deviceUniqueIdentifier() -> String {
-            #if os(macOS)
-            // macOS path
-            let vendorPart = ""  // no real equivalent on macOS → usually empty or use some other stable value
+        #if os(macOS)
+            let vendorPart = ""
             let name = Host.current().localizedName ?? "Mac"
-            
-            #else
+        #else
             // iOS / iPadOS / tvOS / watchOS / visionOS path
             let vendor = UIDevice.current.identifierForVendor?.uuidString ?? ""
             let name = Host.current().localizedName ?? "Device"
+        #endif
             
-            #endif
-            
-            if vendorPart.isEmpty {
-                return name
-            } else {
-                return "\(vendorPart)-\(name)"
-            }
-        }
+        if vendorPart.isEmpty { return name } else { return "\(vendorPart)-\(name)" }
+    }
 }
