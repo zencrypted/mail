@@ -1,6 +1,8 @@
 // MessageControl.swift
+// Copyright (c) Namdak Tonpa
 
 // MessageControl implements Multicast Topic 1 Reader/Writer for Service Control / Discovery
+// See Skynet32 protocol specification.
 
 import Foundation
 

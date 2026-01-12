@@ -1,6 +1,8 @@
 // MessageGroup.swift
+// Copyright (c) Namdak Tonpa
 
 // MessageGroup implements Multicast Topic 29 Reader/Writer for Tactical Chat communications
+// See Skynet32 protocol specification.
 
 import Foundation
 

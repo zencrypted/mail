@@ -1,6 +1,8 @@
 // MessagePeer.swift
+// Copyright (c) Namdak Tonpa
 
 // MessagePeer implements Multicast Topic 28 Reader/Writer for Peer-to-Peer communications
+// See Skynet32 protocol specification.
 
 import Foundation
 
