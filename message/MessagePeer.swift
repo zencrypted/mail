@@ -1,8 +1,11 @@
 // MessagePeer.swift
 
+// MessagePeer implements Multicast Topic 28 Reader/Writer for Peer-to-Peer communications
+
 import Foundation
 
 actor MessagePeer {
+    var topic: Int = 28
     weak var service: MessageService?
     private var socket: CFSocket?
     private let myIdentifier: String

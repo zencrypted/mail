@@ -1,11 +1,11 @@
-// MessageGroup.swift
+// MessageControl.swift
 
-// MessageGroup implements Multicast Topic 29 Reader/Writer for Tactical Chat communications
+// MessageControl implements Multicast Topic 1 Reader/Writer for Service Control / Discovery
 
 import Foundation
 
-actor MessageGroup {
-    var topic: Int = 29
+actor MessageControl {
+    var topic: Int = 1
     weak var service: MessageService?
 
     private var socket: CFSocket?

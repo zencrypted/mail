@@ -126,55 +126,60 @@ let sampleGroupMessage = [
 
 struct Conversation: Identifiable, Hashable {
     let id: String = UUID().uuidString
-    let participants: [Participant]
-    let messages: [Message]
-    let updatedAt: Date
-    let isRead: Bool
-    let isPinned: Bool
-    let isGroupChat: Bool = true
-    let profileImageLink: String?
+    var participants: [Participant]
+    var messages: [Message]
+    var updatedAt: Date
+    var isRead: Bool
+    var isPinned: Bool
+    var isGroupChat: Bool = true
+    var profileImageLink: String?
     func particpantsNotIncludingCurrentUser() -> [Participant] {
         return participants.filter { $0 != sampleLoggedInUser }
     }
+    mutating func append(_ message: Message) {
+            messages.append(message)
+            updatedAt = message.createdAt
+            isRead = (message.author == sampleLoggedInUser) // or your logic
+        }
 }
 
 struct Message: Identifiable, Hashable {
     let id: String = UUID().uuidString
-    let text: String
-    let createdAt: Date
-    let updatedAt = Date()
-    let author: Participant
-    let attachments: [Attachment]? = []
-    let reactions: [Reaction]? = []
+    var text: String
+    var createdAt: Date
+    var updatedAt = Date()
+    var author: Participant
+    var attachments: [Attachment]? = []
+    var reactions: [Reaction]? = []
 }
 
 struct Attachment: Identifiable, Hashable {
     let id: String
-    let width: Int
-    let height: Int
-    let url: String
-    let fileName: String
-    let size: Int
-    let type: String
-    let thumbnails: Thumbnails
+    var width: Int
+    var height: Int
+    var url: String
+    var fileName: String
+    var size: Int
+    var type: String
+    var thumbnails: Thumbnails
 }
 
 struct Thumbnails: Hashable {
-    let small: Thumbnail
-    let large: Thumbnail
-    let full: Thumbnail
+    var small: Thumbnail
+    var large: Thumbnail
+    var full: Thumbnail
 }
 
 struct Thumbnail: Hashable {
-    let width: Int
-    let height: Int
-    let url: String
+    var width: Int
+    var height: Int
+    var url: String
 }
 
 struct Reaction: Identifiable, Hashable {
     let id: UUID
-    let message: Message
-    let author: Participant
+    var message: Message
+    var author: Participant
 }
 
 extension Date {
