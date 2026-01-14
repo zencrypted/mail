@@ -106,33 +106,38 @@ extension Date {
     }
 }
 
+// Claimed Authors of Zen Crypted Message
+
 let sampleParticipantJohn = Participant(
-    firstName: "John",
-    lastName: "Doe",
-    username: "username_for_John",
-    profileImageLink: URL(string: "https://tonpa.guru/5HT.jpg")
+    firstName: "Ihor",
+    lastName: "Horobets",
+    username: "iho",
+    profileImageLink: nil
 )
 
 let sampleParticipantJane = Participant(
-    firstName: "Jane",
-    lastName: "Doe",
-    username: "username_for_Jane",
+    firstName: "Yevgen",
+    lastName: "Gadibirov",
+    username: "monetapm",
     profileImageLink: nil
 )
 
 let sampleParticipantAlex = Participant(
-    firstName: "Alex",
-    lastName: "Smith",
-    username: "username_for_Alex",
+    firstName: "Maksym",
+    lastName: "Sokhatskyi",
+    username: "5HT",
     profileImageLink: nil
+    
 )
 
-let sampleLoggedInUser = sampleParticipantJohn
-let sampleMessageHelloWorldJohn = Message(text: "Hello World", createdAt: .now, author: sampleParticipantJohn)
-let sampleMessageHelloWorldJane = Message(text: "Hello World", createdAt: .now, author: sampleParticipantJane)
+let sampleLoggedInUser = sampleParticipantJane
+
+let sampleMessageHelloWorldJohn = Message(text: "PING?", createdAt: .now, author: sampleParticipantJohn)
+let sampleMessageHelloWorldJane = Message(text: "PONG!", createdAt: .now, author: sampleParticipantJane)
+
 let sampleConversation = Conversation(
-    participants: [sampleParticipantJohn, sampleParticipantJane],
-    messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane],
+    participants: [sampleParticipantJane, sampleParticipantJohn],
+    messages: [sampleMessageHelloWorldJohn,sampleMessageHelloWorldJane],
     updatedAt: Date.now,
     isRead: true,
     isPinned: true,
@@ -140,7 +145,7 @@ let sampleConversation = Conversation(
 )
 
 let sampleLongConversation = Conversation(
-    participants: [sampleParticipantJohn, sampleParticipantJane],
+    participants: [sampleParticipantJane, sampleParticipantAlex],
     messages: sampleMessages,
     updatedAt: Date.now,
     isRead: true,
@@ -149,7 +154,7 @@ let sampleLongConversation = Conversation(
 )
 
 let sampleGroupConversation = Conversation(
-    participants: [sampleParticipantJohn, sampleParticipantJane, sampleParticipantAlex],
+    participants: [sampleParticipantJane, sampleParticipantAlex, sampleParticipantJohn],
     messages: sampleGroupMessage,
     updatedAt: Date.now,
     isRead: false,
@@ -158,22 +163,22 @@ let sampleGroupConversation = Conversation(
 )
 
 let sampleMessages = [
-    Message(text: "Hey Johnny, what's up?", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "Hey Jane, what's up?", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "Nothing much, how about you?", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "I'm doing great, thanks for asking!", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "I'm doing great, thanks for asking!", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "No problem, I'm doing great too!", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "Do you have any plans for this weekend?", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "Do you have any plans for this weekend?", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "No, I'm just chilling at home. What about you?", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "I don't have any plans either, just wondered what you were up to.", createdAt: .now, author: sampleParticipantJohn),
-    Message(text: "Have you seen the new movie?", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "I don't have any plans either, just wondered what you were up to.", createdAt: .now, author: sampleParticipantAlex),
+    Message(text: "Have you seen the new movie?", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "No, I haven't. What's it about?", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "It's a great movie! You should watch it.", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "It's a great movie! You should watch it.", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "I'll definitely check it out!", createdAt: .now, author: sampleParticipantJane),
     Message(text: "What time is it playing at the local theater?", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "It's at 7:00 PM.", createdAt: .now, author: sampleParticipantJohn),
+    Message(text: "It's at 7:00 PM.", createdAt: .now, author: sampleParticipantAlex),
     Message(text: "You want to meet up at the coffee shop, then go check it out", createdAt: .now, author: sampleParticipantJane),
-    Message(text: "Sure! I'll see you there!", createdAt: .now, author: sampleParticipantJohn),
-    Message(text: "Great! See you there!", createdAt: .now, author: sampleParticipantJane)
+    Message(text: "Great! See you there!", createdAt: .now, author: sampleParticipantJane),
+    Message(text: "Bye!", createdAt: .now, author: sampleParticipantAlex)
 ]
 let sampleGroupMessage = [
     Message(text: "Hey, where do y'all want to eat at tonight?", createdAt: .now, author: sampleParticipantJohn),

@@ -77,8 +77,8 @@ struct ConversationListView: View {
     NavigationStack {
         ConversationListView(conversations: [
             sampleConversation,
-            sampleConversation,
-            sampleConversation
+            sampleLongConversation,
+            sampleGroupConversation
         ], selectedConversation: .constant(nil))
     }
 }
