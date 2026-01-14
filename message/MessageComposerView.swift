@@ -9,17 +9,25 @@ struct MessageComposerView: View {
     let attachmentPickerAnimation: Namespace.ID
     @Binding var attachments: [Attachment]
     @Bindable var photoSelectorVM: PhotoSelectorViewModel
-
+    @State private var text = "\u{200B}"
+    
     var body: some View {
         HStack(alignment: .bottom) {
             Button {
-                withAnimation {
+                withAnimation(.easeInOut(duration: 0.25)) {
                     isShowingAttachmentPicker.toggle()
                 }
             } label: {
                 Image(systemName: "plus.circle.fill")
+                    //.symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(.secondary)
+                    .font(.system(size: 18, weight: .regular, design: .rounded))
                     .imageScale(.large)
+                    .symbolEffect(.pulse, options: .repeating)
             }
+            .buttonStyle(.plain)
+            .contentMargins(.horizontal, 4)
+            .foregroundStyle(.tint, .secondary)
             .matchedGeometryEffect(id: matchingGeometryID, in: attachmentPickerAnimation, isSource: true)
 
             VStack(spacing: 0) {
@@ -55,17 +63,24 @@ struct MessageComposerView: View {
                             .roundedCornerWithBorder(borderColor: .secondary, radius: 8, corners: [.topLeft, .topRight])
                     }
                 }
-                TextField("Message Input", text: $messageText, prompt: Text("Message"), axis: .vertical)
-                    .padding(4)
-                    .overlay {
-                        Rectangle()
-                            .fill(.clear)
-                            .roundedCornerWithBorder(
-                                borderColor: .secondary,
-                                radius: 8,
-                                corners: photoSelectorVM.images.isEmpty ? [.allCorners] : [.bottomLeft, .bottomRight]
-                            )
-                    }
+                TextField("Message...", text: $text,
+                          prompt: Text("Use Option+ENTER to add lines...").foregroundStyle(.secondary), axis: .vertical)
+                    .lineLimit(1...7)
+                    .font(.body)
+                    .multilineTextAlignment(.leading)
+                    .textFieldStyle(.plain)
+                    .padding(.horizontal, 9)
+                    .padding(.vertical, 5)
+                    .contentMargins(.horizontal, 4)
+                    .onAppear { text = text }
+                    .background {
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(.white, lineWidth: 1)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(.white))
+                        }
+                    .multilineTextAlignment(.leading)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(.gray, lineWidth: 1))
             }
             if messageText.isEmpty {
                 EmptyView()
