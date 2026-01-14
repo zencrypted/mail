@@ -164,9 +164,9 @@
 
     <section>
 
-    <a name=tech><h3>ТЕХНІЧНІ ХАРАКТЕРИСТИКИ</h3></a>
+    <a name=tech><h3>ХАРАКТЕРИСТИКИ</h3></a>
 
-    <h4>MESSAGE/CHAT/CMS/TLS</h4>
+    <h4>СТАНДАРТИ</h4>
 
     <p>NIST: SP 800 38D-56A-57-162, P-384, P-571;<br>
         ISO: 15946 10646 8824 8825;<br>
@@ -174,53 +174,24 @@
        FIPS: PUB 180-4;<br>
        ДСТУ: 4541 28147 GF(2^509);<br>
         ITU: X.509 (PKI), X.894 (CMS), X.680-X.683 X.690-697 (ASN.1);<br>
-      ДССЗІ: #112 14.05.2010 #1236/5/453 20.08.2012 #687 27.10.2020</p>
+      ДССЗІ: #112 14.05.2010 #1236/5/453 20.08.2012 #687 27.10.2020.</p>
 
-    <h4>PKIX CRYPTO</h4>
+    <h4>КРИПТОГРАФІЧНІ АЛГОРИТМИ</h4>
 
-    <p><b>Протоколи ключів</b>. ED-25519, X25519, X448,
-       SECP-384r1, SECP-571r1, ДСТУ-ГАЛУА-GF(2^431), GF(2^509).</p>
+    <p>Протоколи ключів: X25519, X448, SECP-384r1, SECP-571r1, ДСТУ-ГАЛУА-GF(2^431), GF(2^509);<br>
+       Похідні ключі: KDF, PBDKF2, HKDF, AES-KW;<br>
+       Шифри: AES-CBC, AES-GCM, AES-CCM, ДСТУ-КАЛИНА;<br>
+       Хеші: SHA-2, POLY-1305, AES-CMAK, ДСТУ-КУПИНА, CAdES;<br>
+       Протоколи груп: MLS;<br>
+       Постквантова критпографія: KYBER, IBE.</p>
 
-       <p>Схема ED-25519 поліноміальної репрезентації Монтгомері B⋅y²=x³+A⋅x²+x () і редукційного
-          многочлена x²⁵⁵-19 з порядком циклічної групи &mdash; 2^252 + 27742317777372353535851937790883648493,
-          А=486662, B=1.</p>
-
-       <p>Схема SECP-384r1 поліноміальної репрезентації y²+y⋅x=x³+A⋅x+B і редукційного многочлена x³⁸⁴+x¹²⁸+x⁹⁶+x³²-1,
-          A=FF(9) 00(2) FFFFFFFC,
-          B=3312FA7E 23EE7E49 88E056BE 3F82D191
-            81D9C6EF E8141120 314088F5 013875AC
-            656398D8 A2ED19D2 A85C8EDD 3EC2AEF.</p>
-
-       <p>Схема SECP-571r1 поліноміальної репрезентації y²+y⋅x=x³+A⋅x+B і редукційного многочлена x⁵⁷¹+x¹⁰+x⁵+x²+1,
-          A=1,
-          B=02F40E7E 2221F295 DE297117 B7F3D62F
-            5C6A97FF CB8CEFF1 CD6BA8CE 4A9A18AD
-            84FFABBD 8EFA5933 2BE7AD67 56A66E29
-            4AFD185A 78FF12AA 520E4DE7 39BACA0C
-            7FFEFF7F 2955727A.</p>
-
-       <p>Схема ДСТУ-ГАЛУА-GF(2^431) поліноміальної репрезентації y²+y⋅x=x³+A⋅x+B і редукційного многочлена x⁴³¹+x⁵+x³+1,
-          A=1,
-          B=53FB7AF7 B4407000 A6F226AD 6BAD2837
-            8646BD83 F1F94081 0A4C1953 6EE65E53
-            F40F973F 2F06C5E8 0EFE3B43 651BD5FF
-            8B06BA5F 9299.</p>
-
-    <p><b>Похідні ключі</b>. KDF, PBDKF2, HKDF, AES-KW.</p>
-
-    <p><b>Шифри</b>. AES-CBC, AES-GCM, AES-CCM, ДСТУ-КАЛИНА.</p>
-
-    <p><b>Хеші</b>. SHA-2, POLY-1305, AES-CMAK, ДСТУ-КУПИНА, CAdES.</p>
-
-    <p><b>Протоколи груп</b>. MLS.</p>
-
-    <p><b>PQC</b>. IBE, KYBER.</p>
+   <br><center>&dot;</center>
+   <br>
 
     </section>
 
-
 </main><footer>
-    Namdak Tonpa <span class="heart">❤</span> ERP/1
+    Namdak Tonpa <span class="heart">❤</span> X509.CHAT
 </footer></body>
 <script>function drop(){document.getElementById("dropdown").classList.toggle("show");}</script>
 </html>
