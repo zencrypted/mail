@@ -1,8 +1,8 @@
-// CustomRoundedCorner.swift
+// MessageRoundedCorner.swift
 
 import SwiftUI
 
-struct RoundedCorner: Shape {
+struct MessageRoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: RectCorner = .allCorners
 
@@ -67,11 +67,12 @@ struct RoundedCorner: Shape {
 }
 
 extension View {
-    func roundedCornerWithBorder(borderColor: Color, radius: CGFloat, corners: RoundedCorner.RectCorner) -> some View {
-        self.clipShape(RoundedCorner(radius: radius, corners: corners))
+    func roundedCornerWithBorder(borderColor: Color, radius: CGFloat, corners: MessageRoundedCorner.RectCorner) -> some View {
+        self.clipShape(MessageRoundedCorner(radius: radius, corners: corners))
             .overlay(
-                RoundedCorner(radius: radius, corners: corners)
+                MessageRoundedCorner(radius: radius, corners: corners)
                     .stroke(borderColor, lineWidth: 1)
             )
     }
 }
+

@@ -4,14 +4,14 @@ import SwiftUI
 import CoreData
 
 @main
-struct MessageApp: App {
+struct ChatApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedConversation: Conversation?
 
     var body: some Scene {
         WindowGroup {
             NavigationSplitView {
-                ConversationListView(
+                ConversationsView(
                     conversations: [
                         sampleConversation,
                         sampleLongConversation,
@@ -21,7 +21,7 @@ struct MessageApp: App {
                 )
             } detail: {
                 if let selectedConversation {
-                    ChatThreadView(conversation: selectedConversation)
+                    MessageChatView(conversation: selectedConversation)
                 } else {
                     ContentUnavailableView("Select a conversation", systemImage: "exclamationmark.bubble")
                 }

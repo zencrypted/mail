@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ConversationListView: View {
+struct ConversationsView: View {
     let conversations: [Conversation]
     @Binding var selectedConversation: Conversation?
     @State var isShowingNewMessageView = false
@@ -31,7 +31,7 @@ struct ConversationListView: View {
 
     var body: some View {
         List(filteredConversations, selection: $selectedConversation) { conversation in
-            ConversationListCell(conversation: conversation)
+            ConversationsCell(conversation: conversation)
                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                     Button {
                         // mark conversation as unread
@@ -68,14 +68,14 @@ struct ConversationListView: View {
             }
         }
         .sheet(isPresented: $isShowingNewMessageView) {
-            NewMessage(isPresented: $isShowingNewMessageView)
+            ChatNewMessage(isPresented: $isShowingNewMessageView)
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        ConversationListView(conversations: [
+        ConversationsView(conversations: [
             sampleConversation,
             sampleConversation,
             sampleConversation

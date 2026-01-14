@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct NewMessage: View {
+struct ChatNewMessage: View {
     @Binding var isPresented: Bool
     @State var to = ""
     @State var message = ""
@@ -65,6 +65,6 @@ struct NewMessage: View {
 
 #Preview {
     NavigationStack {
-        NewMessage(isPresented: .constant(true))
+        ChatNewMessage(isPresented: .constant(true))
     }
 }

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ChatThreadView: View {
+struct MessageChatView: View {
     let conversation: Conversation
     @State var text = ""
     @State var isShowingAttachmentPicker = false
@@ -41,5 +41,5 @@ struct ChatThreadView: View {
 }
 
 #Preview {
-    ChatThreadView(conversation: sampleLongConversation)
+    MessageChatView(conversation: sampleLongConversation)
 }

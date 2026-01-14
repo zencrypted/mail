@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ConversationListCell: View {
+struct ConversationsCell: View {
     let conversation: Conversation
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
 
@@ -15,7 +15,7 @@ struct ConversationListCell: View {
                     .fill(conversation.isRead ? .clear : .blue)
                     .frame(width: 10, height: 10)
 
-                AvatarView(participant: conversation.particpantsNotIncludingCurrentUser().first!, size: 50)
+                ChatAvatarView(participant: conversation.particpantsNotIncludingCurrentUser().first!, size: 50)
             }
 
             if dynamicTypeSize >= .accessibility1 {
@@ -94,7 +94,7 @@ struct ConversationListCell: View {
 #Preview {
     VStack(spacing: 8) {
         // with todays date
-        ConversationListCell(
+        ConversationsCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -105,7 +105,7 @@ struct ConversationListCell: View {
             )
         )
         // with a long time ago date
-        ConversationListCell(
+        ConversationsCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -116,7 +116,7 @@ struct ConversationListCell: View {
             )
         )
         // with a long time ago date
-        ConversationListCell(
+        ConversationsCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -127,7 +127,7 @@ struct ConversationListCell: View {
             )
         )
         // with a long message
-        ConversationListCell(
+        ConversationsCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [Message(text: "Whats up with your face? It look's really weird and I don't know if you have noticied it yet.", createdAt: .now, author: sampleParticipantJohn)],

@@ -17,7 +17,7 @@ struct MessageBubbleView: View {
             }
 
             if shouldShowParticipantInfo && sampleLoggedInUser != message.author {
-                AvatarView(participant: message.author)
+                ChatAvatarView(participant: message.author)
             }
 
             VStack(alignment: .leading, spacing: 4) {

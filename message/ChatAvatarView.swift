@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct AvatarView: View {
+struct ChatAvatarView: View {
     let participant: Participant
     let size: Double
 
@@ -53,8 +53,8 @@ struct AvatarView: View {
 
 #Preview {
     VStack {
-        AvatarView(participant: sampleParticipantJohn)
-        AvatarView(
+        ChatAvatarView(participant: sampleParticipantJohn)
+        ChatAvatarView(
             participant: Participant(
                 firstName: "Mary",
                 lastName: "Jane",
@@ -63,7 +63,7 @@ struct AvatarView: View {
             ),
             size: 75
         )
-        AvatarView(
+        ChatAvatarView(
             participant: Participant(
                 firstName: "Aqua",
                 lastName: "Man",
