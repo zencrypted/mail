@@ -1,4 +1,5 @@
 // ChatPersistence.swift
+// Copyright (c) 2026 Namdak Tonpa
 
 import CoreData
 

@@ -1,4 +1,5 @@
 // MessageRoundedCorner.swift
+// Copyright (c) 2026 Namdak Tonpa
 
 import SwiftUI
 

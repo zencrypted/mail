@@ -1,4 +1,5 @@
 // MessageAddAttachmentView.swift
+// Copyright (c) 2026 Namdak Tonpa
 
 import PhotosUI
 import SwiftUI
