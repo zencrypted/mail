@@ -5,7 +5,7 @@ import SwiftUI
 struct MessageBubble: Shape {
     func path(in rect: CGRect) -> Path {
         let path = Path { path in
-            let cornerRadius: Double = 10
+            let cornerRadius: Double = 16
             let tailWidth: Double = 8
             let tailHeight = cornerRadius
             let bubbleWidth = rect.width - tailWidth
@@ -87,7 +87,7 @@ struct MessageBubbleStyle: ViewModifier {
             content
                 .foregroundStyle(forgroundColor)
                 .padding(.vertical, 8)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 16)
                 .padding(isFromYou ? .trailing : .leading, 8) // 8 is the tail width
                 .background(
                     MessageBubble()
