@@ -34,11 +34,12 @@
         <section>
             <h3><a href="#booklet">БРОШУРА</a></h3>
             <div><ul><li><a href="#principles">ПРИНЦИПИ</a></li>
-                     <li><a href="#business">АВТОНОМНІСТЬ</a></li>
-                     <li><a href="#protocol">БІЗНЕС</a></li>
+                     <li><a href="#autonomous">АВТОНОМНІСТЬ</a></li>
                      <li><a href="#social">СУСПІЛЬСТВО</a></li>
+                     <li><a href="#government">ДЕРЖАВА</a></li>
+                     <li><a href="#business">БІЗНЕС</a></li>
                      <li><a href="#protocol">ПРОТОКОЛ</a></li>
-                     <li><a href="#protocol">ХАРАКТЕРИСТИКИ</a></li>
+                     <li><a href="#technical">ХАРАКТЕРИСТИКИ</a></li>
                 </ul></div>
             <br />
             <div>
@@ -74,6 +75,9 @@
         забезпечення вимагає верифікації на всіх рівнях, а отже повинно бути мінімалістичним. Ми взяли
         за основу сучасний SwiftUI декларативний фреймворк і повторили в ньому еститику рідного додатку.</p>
 
+   <br><center>&dot;</center>
+   <br>
+
     </section>
     <section>
     <a name=principles><h3>АВТОНОМНІСТЬ</h3></a>
@@ -90,6 +94,9 @@
           інформація про апаратуру клієнта, тощо. ЧАТ використовує тільки наступні внутрішнін ідетифікатори: client,
           device, profile, roster виключно для роутінга повідомлень. Користувач також має змогу обрати зберігати
            контактну книгу (ростер) не на сервері, а на клієнті;</p>
+
+   <br><center>&dot;</center>
+   <br>
 
     </section>
 
@@ -152,14 +159,6 @@
    <br><center>&dot;</center>
    <br>
 
-    <p>[1]. <a href="https://github.com/synrc/chat/tree/main/priv/v2/CHAT.asn1">SYNRC</a>. ASN.1/DER/TLS/TCP CHAT протокол.<br>
-       [2]. <a href="https://dut.edu.ua/ua/lib/1/category/2132/view/1822">Ю.І. Горбенко, І.Д. Горбенко.</a> &mdash; Інфраструктури відкритих ключів. Електроний цифровий підпис. Теорія та практика.<br>
-       [3]. <a href="http://ksv.do.am/GOST/DSTY_ALL/DSTU2/dstu_4145-2002.pdf">ДСТУ 4145-2002</a> &mdash; Інформаційні технології. Криптографічний захист інформації.
-           Цифровий підпис, що ґрунтується на еліптичних кривих. Формування та перевірка.<br>
-       [4]. <a href="https://www.secg.org/sec2-v2.pdf">SEC2</a> &mdash; Recommended EC Domain Parameters.<br>
-       [5]. <a href="https://research.nccgroup.com/wp-content/uploads/2020/02/A_Tour_of_Curve25519_in_Erlang-1.pdf">Eric Schorn</a> &mdash; A Tour of Curve25519 in Erlang.
-    </p>
-
     </section>
 
     <section>
@@ -178,7 +177,7 @@
 
     <h4>КРИПТОГРАФІЧНІ АЛГОРИТМИ</h4>
 
-    <p>Протоколи ключів: X25519, X448, SECP-384r1, SECP-571r1, ДСТУ-ГАЛУА-GF(2^431), GF(2^509);<br>
+    <p>Протоколи ключів: SECP-571r1, GF(2^509);<br>
        Похідні ключі: KDF, PBDKF2, HKDF, AES-KW;<br>
        Шифри: AES-CBC, AES-GCM, AES-CCM, ДСТУ-КАЛИНА;<br>
        Хеші: SHA-2, POLY-1305, AES-CMAK, ДСТУ-КУПИНА, CAdES;<br>
