@@ -1,3 +1,5 @@
+// ChatData.swift
+
 import SwiftUI
 
 enum Topic: String, Codable, CaseIterable, Identifiable {
@@ -43,6 +45,64 @@ struct Participant: Identifiable, Equatable, Hashable {
             familyName: self.lastName,
             nickname: self.username
         )
+    }
+}
+
+struct Conversation: Identifiable, Hashable {
+    let id: String = UUID().uuidString
+    var participants: [Participant]
+    var messages: [Message]
+    var updatedAt: Date
+    var isRead: Bool
+    var isPinned: Bool
+    var isGroupChat: Bool = true
+    var profileImageLink: String?
+    func particpantsNotIncludingCurrentUser() -> [Participant] {
+        return participants.filter { $0 != sampleLoggedInUser }
+    }
+    mutating func append(_ message: Message) {
+            messages.append(message)
+            updatedAt = message.createdAt
+            isRead = (message.author == sampleLoggedInUser) // or your logic
+        }
+}
+
+struct Message: Identifiable, Hashable {
+    let id: String = UUID().uuidString
+    var text: String
+    var createdAt: Date
+    var updatedAt = Date()
+    var author: Participant
+    var attachments: [Attachment]? = []
+    var reactions: [Reaction]? = []
+}
+
+struct Attachment: Identifiable, Hashable {
+    let id: String
+    var width: Int
+    var height: Int
+    var url: String
+    var fileName: String
+    var size: Int
+    var type: String
+    var thumbnails: [Thumbnail]? = []
+}
+
+struct Thumbnail: Hashable {
+    var width: Int
+    var height: Int
+    var url: String
+}
+
+struct Reaction: Identifiable, Hashable {
+    let id: UUID
+    var message: Message
+    var author: Participant
+}
+
+extension Date {
+    var daysSinceNow: Int {
+        Calendar.current.dateComponents([.day], from: self, to: Date.now).day ?? 0
     }
 }
 
@@ -123,67 +183,3 @@ let sampleGroupMessage = [
     Message(text: "Sounds good to me!", createdAt: .now, author: sampleParticipantJane),
     Message(text: "Sounds good to me too!", createdAt: .now, author: sampleParticipantAlex)
 ]
-
-struct Conversation: Identifiable, Hashable {
-    let id: String = UUID().uuidString
-    var participants: [Participant]
-    var messages: [Message]
-    var updatedAt: Date
-    var isRead: Bool
-    var isPinned: Bool
-    var isGroupChat: Bool = true
-    var profileImageLink: String?
-    func particpantsNotIncludingCurrentUser() -> [Participant] {
-        return participants.filter { $0 != sampleLoggedInUser }
-    }
-    mutating func append(_ message: Message) {
-            messages.append(message)
-            updatedAt = message.createdAt
-            isRead = (message.author == sampleLoggedInUser) // or your logic
-        }
-}
-
-struct Message: Identifiable, Hashable {
-    let id: String = UUID().uuidString
-    var text: String
-    var createdAt: Date
-    var updatedAt = Date()
-    var author: Participant
-    var attachments: [Attachment]? = []
-    var reactions: [Reaction]? = []
-}
-
-struct Attachment: Identifiable, Hashable {
-    let id: String
-    var width: Int
-    var height: Int
-    var url: String
-    var fileName: String
-    var size: Int
-    var type: String
-    var thumbnails: Thumbnails
-}
-
-struct Thumbnails: Hashable {
-    var small: Thumbnail
-    var large: Thumbnail
-    var full: Thumbnail
-}
-
-struct Thumbnail: Hashable {
-    var width: Int
-    var height: Int
-    var url: String
-}
-
-struct Reaction: Identifiable, Hashable {
-    let id: UUID
-    var message: Message
-    var author: Participant
-}
-
-extension Date {
-    var daysSinceNow: Int {
-        Calendar.current.dateComponents([.day], from: self, to: Date.now).day ?? 0
-    }
-}

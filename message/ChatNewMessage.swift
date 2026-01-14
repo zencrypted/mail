@@ -1,4 +1,4 @@
-// NewMessage.swift
+// ChatNewMessage.swift
 
 import SwiftUI
 

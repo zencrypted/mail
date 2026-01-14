@@ -1,4 +1,4 @@
-// PhotoSelectorViewModel.swift
+// ChatPhotoSelectorViewModel.swift
 
 import SwiftUI
 

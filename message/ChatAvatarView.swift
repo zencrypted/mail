@@ -1,4 +1,4 @@
-// AvatarView.swift
+// ChatAvatarView.swift
 
 import SwiftUI
 

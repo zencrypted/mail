@@ -1,4 +1,4 @@
-//  MessageApp.swift
+//  ChatApp.swift
 
 import SwiftUI
 import CoreData
@@ -11,7 +11,7 @@ struct ChatApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationSplitView {
-                ConversationsView(
+                ConversationListView(
                     conversations: [
                         sampleConversation,
                         sampleLongConversation,

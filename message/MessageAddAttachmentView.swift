@@ -1,4 +1,4 @@
-// AddAttachmentView.swift
+// MessageAddAttachmentView.swift
 
 import PhotosUI
 import SwiftUI

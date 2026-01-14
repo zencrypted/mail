@@ -1,4 +1,4 @@
-// PhotoSelectorView.swift
+// ChatPhotoSelectorView.swift
 
 import SwiftUI
 internal import UniformTypeIdentifiers

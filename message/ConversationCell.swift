@@ -1,8 +1,8 @@
-// ConversationListCell.swift
+// ConversationCell.swift
 
 import SwiftUI
 
-struct ConversationsCell: View {
+struct ConversationCell: View {
     let conversation: Conversation
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
 
@@ -94,7 +94,7 @@ struct ConversationsCell: View {
 #Preview {
     VStack(spacing: 8) {
         // with todays date
-        ConversationsCell(
+        ConversationCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -105,7 +105,7 @@ struct ConversationsCell: View {
             )
         )
         // with a long time ago date
-        ConversationsCell(
+        ConversationCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -116,7 +116,7 @@ struct ConversationsCell: View {
             )
         )
         // with a long time ago date
-        ConversationsCell(
+        ConversationCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [sampleMessageHelloWorldJohn, sampleMessageHelloWorldJane, sampleMessageHelloWorldJohn],
@@ -127,7 +127,7 @@ struct ConversationsCell: View {
             )
         )
         // with a long message
-        ConversationsCell(
+        ConversationCell(
             conversation: Conversation(
                 participants: [sampleParticipantJohn, sampleParticipantJane],
                 messages: [Message(text: "Whats up with your face? It look's really weird and I don't know if you have noticied it yet.", createdAt: .now, author: sampleParticipantJohn)],
