@@ -22,20 +22,20 @@ struct InboxFolder: Identifiable, Hashable {
     var badgeColor: Color
     
     static let mockFolders: [InboxFolder] = [
-        InboxFolder(id: "for_me", name: "For me", iconName: "tray.and.arrow.down", incomingCounter: 12, badgeColor: .blue),
-        InboxFolder(id: "for_execution", name: "For execution", iconName: "doc.badge.gearshape", incomingCounter: 5, badgeColor: .orange),
-        InboxFolder(id: "for_approval", name: "For approval", iconName: "checkmark.seal", incomingCounter: 3, badgeColor: .green),
-        InboxFolder(id: "for_agreement", name: "For agreement", iconName: "hand.raised", incomingCounter: 1, badgeColor: .teal),
-        InboxFolder(id: "for_signing", name: "For signing", iconName: "signature", incomingCounter: 8, badgeColor: .purple),
-        InboxFolder(id: "for_acknowledge", name: "For acknowledge", iconName: "eye", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "my_resolution", name: "My resolution", iconName: "text.badge.checkmark", incomingCounter: 2, badgeColor: .cyan),
-        InboxFolder(id: "first_view", name: "First view", iconName: "01.circle", incomingCounter: 4, badgeColor: .indigo),
-        InboxFolder(id: "on_control", name: "On control", iconName: "lock.shield", incomingCounter: 0, badgeColor: .gray),
+        InboxFolder(id: "for_me", name: "Inbox", iconName: "tray.and.arrow.down", incomingCounter: 12, badgeColor: .blue),
+        InboxFolder(id: "for_execution", name: "Execution", iconName: "doc.badge.gearshape", incomingCounter: 5, badgeColor: .orange),
+        InboxFolder(id: "for_approval", name: "Approval", iconName: "checkmark.seal", incomingCounter: 3, badgeColor: .green),
+        InboxFolder(id: "for_agreement", name: "Agreement", iconName: "hand.raised", incomingCounter: 1, badgeColor: .teal),
+        InboxFolder(id: "for_signing", name: "Signing", iconName: "signature", incomingCounter: 8, badgeColor: .purple),
+        InboxFolder(id: "for_acknowledge", name: "Acknowledge", iconName: "eye", incomingCounter: 0, badgeColor: .gray),
+        InboxFolder(id: "my_resolution", name: "Resolution", iconName: "text.badge.checkmark", incomingCounter: 2, badgeColor: .cyan),
+        InboxFolder(id: "first_view", name: "Initial", iconName: "01.circle", incomingCounter: 4, badgeColor: .indigo),
+        InboxFolder(id: "on_control", name: "Control", iconName: "lock.shield", incomingCounter: 0, badgeColor: .gray),
         InboxFolder(id: "urgent", name: "Urgent", iconName: "exclamationmark.triangle", incomingCounter: 7, badgeColor: .red),
-        InboxFolder(id: "created_by_me", name: "Created by me", iconName: "doc.badge.plus", incomingCounter: 0, badgeColor: .gray),
+        InboxFolder(id: "created_by_me", name: "Originated", iconName: "doc.badge.plus", incomingCounter: 0, badgeColor: .gray),
         InboxFolder(id: "rejected", name: "Rejected", iconName: "arrow.uturn.backward", incomingCounter: 1, badgeColor: .yellow),
         InboxFolder(id: "returned", name: "Returned", iconName: "arrow.uturn.forward", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "from_me", name: "From me", iconName: "paperplane", incomingCounter: 0, badgeColor: .gray),
+        InboxFolder(id: "from_me", name: "Outbox", iconName: "paperplane", incomingCounter: 0, badgeColor: .gray),
         InboxFolder(id: "finished", name: "Finished", iconName: "archivebox", incomingCounter: 0, badgeColor: .gray),
         InboxFolder(id: "favorite", name: "Favorite", iconName: "star", incomingCounter: 2, badgeColor: .yellow)
     ]
