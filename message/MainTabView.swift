@@ -10,7 +10,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Messages", systemImage: "tray.full")
                 }
-                .tag(0)https://crm.erp.uno
+                .tag(0)
             FormsView()
                 .tabItem {
                     Label("Search", systemImage: "list.clipboard")
