@@ -8,7 +8,7 @@ struct ERPTheme {
     static let secondaryBackground = Color(NSColor.windowBackgroundColor)
     static let secondaryText = Color(NSColor.secondaryLabelColor)
     static let accent = Color(NSColor.controlAccentColor)
-    static let border = Color(NSColor.textColor).opacity(0.5)
+    static let border = Color(NSColor.textColor).opacity(0.0)
     static let invertedBackground = Color(NSColor.textColor)
     static let invertedText = Color(NSColor.textBackgroundColor)
 #else
@@ -17,7 +17,7 @@ struct ERPTheme {
     static let secondaryBackground = Color(UIColor.secondarySystemBackground)
     static let secondaryText = Color(UIColor.secondaryLabel)
     static let accent = Color.accentColor
-    static let border = Color(UIColor.label).opacity(0.5)
+    static let border = Color(UIColor.label).opacity(0.0)
     static let invertedBackground = Color(UIColor.label)
     static let invertedText = Color(UIColor.systemBackground)
 #endif

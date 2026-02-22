@@ -9,7 +9,7 @@ struct UserProfile: Identifiable, Hashable {
     let role: String
     let organization: String
     
-    static let mock = UserProfile(id: UUID(), name: "John Doe", role: "Chief Executive Officer", organization: "Acme Corp")
+    static let mock = UserProfile(id: UUID(), name: "Max Socha", role: "CEO", organization: "Zen Crypted")
 }
 
 // MARK: - Inbox Folder

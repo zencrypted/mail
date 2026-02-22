@@ -19,7 +19,7 @@ struct DocumentDetailView: View {
                     
                     NativePDFView(url: document.pdfURL, defaultData: Data(base64Encoded: dummyPDFBase64))
                         .background(Color.gray.opacity(0.2)) // Give some visual border for the document
-                        .border(ERPTheme.border, width: 0.5)
+                        .border(ERPTheme.border, width: 0.0)
                 }
                 .frame(width: proxy.size.width * 0.6)
                 .background(ERPTheme.invertedBackground)

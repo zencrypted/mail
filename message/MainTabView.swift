@@ -31,6 +31,8 @@ struct MainTabView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
+                    .padding()
+                    .frame(width: 250, height: 25)
                 }
             }
             

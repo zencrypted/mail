@@ -99,7 +99,7 @@ struct ERPMainView: View {
             }
             .padding()
             .background(ERPTheme.secondaryBackground.opacity(0.3))
-            .border(ERPTheme.border, width: 0.5)
+            .border(ERPTheme.border, width: 0.0)
             
             // Per-Column Filter Bar
             HStack(spacing: 8) {
@@ -117,7 +117,7 @@ struct ERPMainView: View {
             }
             .padding()
             .background(ERPTheme.secondaryBackground.opacity(0.3))
-            .border(ERPTheme.border, width: 0.5)
+            .border(ERPTheme.border, width: 0.0)
 
             // Advanced Table with specific requested columns supporting multi-selection
             Table(filteredDocs, selection: $state.selectedDocuments, sortOrder: $sortOrder) {

@@ -16,7 +16,8 @@ struct FormsView: View {
                 .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .erpBackground()
+        .border(ERPTheme.border, width: 0.0)
+//        .erpBackground()
     }
 }
 
