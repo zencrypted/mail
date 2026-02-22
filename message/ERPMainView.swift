@@ -109,11 +109,11 @@ struct ERPMainView: View {
                 TextField("Type", text: $state.typeFilter).textFieldStyle(.roundedBorder)
                 TextField("Initiator", text: $state.initiatorFilter).textFieldStyle(.roundedBorder)
                 TextField("To...", text: $state.addressedToFilter).textFieldStyle(.roundedBorder)
-                TextField("Stage", text: $state.stageFilter).textFieldStyle(.roundedBorder)
-                TextField("Number", text: $state.numberFilter).textFieldStyle(.roundedBorder)
-                TextField("Correspondent", text: $state.correspondentFilter).textFieldStyle(.roundedBorder)
-                TextField("Summary", text: $state.summaryFilter).textFieldStyle(.roundedBorder)
-                TextField("Out Num", text: $state.outNumberFilter).textFieldStyle(.roundedBorder)
+               // TextField("Stage", text: $state.stageFilter).textFieldStyle(.roundedBorder)
+               // TextField("Number", text: $state.numberFilter).textFieldStyle(.roundedBorder)
+               // TextField("Correspondent", text: $state.correspondentFilter).textFieldStyle(.roundedBorder)
+               // TextField("Summary", text: $state.summaryFilter).textFieldStyle(.roundedBorder)
+               // TextField("Out Num", text: $state.outNumberFilter).textFieldStyle(.roundedBorder)
             }
             .padding()
             .background(ERPTheme.secondaryBackground.opacity(0.3))
@@ -139,14 +139,14 @@ struct ERPMainView: View {
                 TableColumn("Type", value: \.type)
                 TableColumn("Initiator", value: \.initiator)
                 TableColumn("Addressed to", value: \.addressedTo)
-                TableColumn("Stage", value: \.stage)
-                TableColumn("Number", value: \.documentNumber)
+                //TableColumn("Stage", value: \.stage)
+                //TableColumn("Number", value: \.documentNumber)
                 TableColumn("Date", value: \.date) { doc in
                     Text(doc.date, style: .date)
                 }
-                TableColumn("Correspondent", value: \.correspondent)
-                TableColumn("Summary", value: \.shortSummary)
-                TableColumn("Out Number", value: \.outgoingNumber)
+                //TableColumn("Correspondent", value: \.correspondent)
+                //TableColumn("Summary", value: \.shortSummary)
+                //TableColumn("Out Number", value: \.outgoingNumber)
             }
             .tableStyle(.bordered)
         }

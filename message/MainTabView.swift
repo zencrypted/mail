@@ -7,18 +7,17 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            ERPMainView()
-                .tabItem {
-                    Label("ERP Messages", systemImage: "tray.full")
-                }
-                .tag(0)
-            
             FormsView()
                 .tabItem {
-                    Label("Forms", systemImage: "list.clipboard")
+                    Label("Messages", systemImage: "list.clipboard")
                 }
                 .tag(1)
-        }
+            ERPMainView()
+                .tabItem {
+                    Label("Process", systemImage: "tray.full")
+                }
+                .tag(0)
+            }
         .accentColor(ERPTheme.accent)
         .toolbar {
             ToolbarItem(placement: .navigation) {
@@ -40,12 +39,12 @@ struct MainTabView: View {
             ToolbarItem(placement: .principal) {
                 Picker("Filter", selection: $state.documentFilter) {
                     Text("All").tag("All")
-                    Text("Processed").tag("Processed")
-                    Text("Not Processed").tag("Not Processed")
+                    Text("In-process").tag("Processed")
+                    Text("Non-started").tag("Not Processed")
                 }
                 .pickerStyle(.segmented)
                 .padding()
-                .frame(width: 245, height: 25)
+                .frame(width: 230, height: 25)
             }
             
             ToolbarItem(placement: .primaryAction) {
