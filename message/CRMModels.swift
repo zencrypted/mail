@@ -164,11 +164,11 @@ struct TemplateCategory: Identifiable, Hashable {
     
     static let mockCategories: [TemplateCategory] = [
         TemplateCategory(
-            categoryName: "Contracts",
+            categoryName: "Наказ №370",
             iconName: "doc.text.fill",
             templates: [
                 DocumentTemplate(
-                    templateName: "ZEN CRYPTED NDA",
+                    templateName: "Директива",
                     iconName: "lock.doc.fill",
                     requiredFields: [
                         FormField(title: "Company Name", type: .text, isRequired: true),
@@ -179,7 +179,7 @@ struct TemplateCategory: Identifiable, Hashable {
                     description: "Standard Non-Disclosure Agreement for ZEN CRYPTED."
                 ),
                 DocumentTemplate(
-                    templateName: "Employment Contract",
+                    templateName: "Бойове розпорядження",
                     iconName: "person.text.rectangle.fill",
                     requiredFields: [
                         FormField(title: "Employee Name", type: .text, isRequired: true),
@@ -191,7 +191,7 @@ struct TemplateCategory: Identifiable, Hashable {
                     description: "Standard employment agreement signed by Maxim Sokhatsky."
                 ),
                 DocumentTemplate(
-                    templateName: "Vendor SLA",
+                    templateName: "Доповідна записка",
                     iconName: "briefcase.fill",
                     requiredFields: [
                         FormField(title: "Vendor Name", type: .text, isRequired: true),
@@ -204,11 +204,11 @@ struct TemplateCategory: Identifiable, Hashable {
             ]
         ),
         TemplateCategory(
-            categoryName: "Memos",
+            categoryName: "Постанова №55",
             iconName: "note.text",
             templates: [
                 DocumentTemplate(
-                    templateName: "CEO Announcement",
+                    templateName: "Звернення громадян",
                     iconName: "megaphone.fill",
                     requiredFields: [
                         FormField(title: "Subject", type: .text, isRequired: true),
@@ -218,7 +218,7 @@ struct TemplateCategory: Identifiable, Hashable {
                     description: "Official internal announcement from Maxim Sokhatsky."
                 ),
                 DocumentTemplate(
-                    templateName: "Security Incident Report",
+                    templateName: "Внутрішній документ",
                     iconName: "exclamationmark.shield.fill",
                     requiredFields: [
                         FormField(title: "Incident Type", type: .searchDropdown(options: ["Data Breach", "DDoS Attack", "Malware", "Phishing"]), isRequired: true),
