@@ -121,7 +121,7 @@ struct NewDocumentWizardView: View {
                         ForEach(template.requiredFields) { field in
                             HStack {
                                 Text(field.title)
-                                    .frame(width: 140, alignment: .leading)
+                                    .frame(alignment: .leading)
                                 Spacer()
                                 dynamicField(for: field)
                             }
@@ -221,14 +221,14 @@ struct NewDocumentWizardView: View {
     private func dynamicField(for field: FormField) -> some View {
         switch field.type {
         case .text:
-            TextField("Enter \(field.title)", text: Binding(
+            TextField("", text: Binding(
                 get: { fieldValues[field.id] ?? "" },
                 set: { fieldValues[field.id] = $0 }
             ))
             .textFieldStyle(.roundedBorder)
         
         case .number, .currency:
-            TextField("0.00", text: Binding(
+            TextField("", text: Binding(
                 get: { fieldValues[field.id] ?? "" },
                 set: { fieldValues[field.id] = $0 }
             ))
