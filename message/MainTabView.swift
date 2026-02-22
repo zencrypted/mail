@@ -31,6 +31,7 @@ struct MainTabView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
+                    .pickerStyle(.segmented)
                     .padding()
                     .frame(width: 250, height: 25)
                 }
@@ -43,29 +44,24 @@ struct MainTabView: View {
                     Text("Not Processed").tag("Not Processed")
                 }
                 .pickerStyle(.segmented)
-                .frame(width: 300)
+                .padding()
+                .frame(width: 245, height: 25)
             }
             
             ToolbarItem(placement: .primaryAction) {
-                HStack(spacing: 20) {
-                    Button("Notifications") {
-                        // Show notifications popover
-                    }
+                HStack {
                     
                     Picker("Theme", selection: $state.selectedTheme) {
                         ForEach(UserThemePreference.allCases, id: \.self) { theme in
                             Text(theme.rawValue).tag(theme)
                         }
                     }
-                    .pickerStyle(.menu)
-                    .frame(width: 100)
                     
-                    Button("Exit") {
-                        state.logout()
-                    }
-                    .foregroundColor(.red)
                 }
-                .buttonStyle(.bordered)
+                .pickerStyle(.segmented)
+                .padding()
+                .frame(width: 180, height: 25)
+                
             }
         }
     }
