@@ -41,9 +41,10 @@ struct NewDocumentWizardView: View {
                 #endif
             }
             .navigationTitle(selectedTemplate?.templateName ?? "Select Document Category")
+            /*
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Reset Form") { 
+                    Button("Reset Form") {
                         withAnimation {
                             selectedTemplate = nil
                             fieldValues.removeAll()
@@ -55,6 +56,7 @@ struct NewDocumentWizardView: View {
                     }
                 }
             }
+             */
         }
         // Size the layout properly on macOS
         .frame(minWidth: 1000, minHeight: 600)
