@@ -8,12 +8,12 @@ struct MainTabView: View {
         TabView(selection: $state.selectedTab) {
             CRMMainView()
                 .tabItem {
-                    Label("Messages", systemImage: "tray.full")
+                    Label("Search", systemImage: "tray.full")
                 }
                 .tag(0)
             FormsView()
                 .tabItem {
-                    Label("Search", systemImage: "list.clipboard")
+                    Label("Create", systemImage: "list.clipboard")
                 }
                 .tag(1)
         }

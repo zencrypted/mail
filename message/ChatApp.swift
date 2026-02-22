@@ -46,7 +46,7 @@ struct ChatApp: App {
                 .keyboardShortcut("o", modifiers: .command)
             }
             
-            CommandMenu("CRM Users") {
+            CommandMenu("Directory") {
                 Button("Switch User...") {
                     crmState.logout()
                 }

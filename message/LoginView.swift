@@ -18,7 +18,7 @@ struct LoginView: View {
                 .frame(width: 80, height: 80)
                 .foregroundColor(CRMTheme.primaryText)
             
-            Text("CRM Secure Login")
+            Text("Zen Crypted")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .crmTextStyle()
