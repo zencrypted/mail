@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Maps app theme colors to native system semantic colors for seamless Light/Dark mode.
-struct ERPTheme {
+struct CRMTheme {
 #if os(macOS)
     static let primaryBackground = Color(NSColor.textBackgroundColor)
     static let primaryText = Color(NSColor.textColor)
@@ -24,11 +24,11 @@ struct ERPTheme {
 }
 
 extension View {
-    func erpBackground() -> some View {
-        self.background(ERPTheme.primaryBackground)
+    func crmBackground() -> some View {
+        self.background(CRMTheme.primaryBackground)
     }
     
-    func erpTextStyle() -> some View {
-        self.foregroundColor(ERPTheme.primaryText)
+    func crmTextStyle() -> some View {
+        self.foregroundColor(CRMTheme.primaryText)
     }
 }

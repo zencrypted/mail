@@ -1,15 +1,14 @@
 import SwiftUI
 
-/// Main container for the ERP system, loaded after successful login.
+/// Main container for the CRM system, loaded after successful login.
 struct MainTabView: View {
-    @EnvironmentObject var state: ERPState
-    @State private var selectedTab = 0
+    @EnvironmentObject var state: CRMState
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            ERPMainView()
+        TabView(selection: $state.selectedTab) {
+            CRMMainView()
                 .tabItem {
-                    Label("ERP Messages", systemImage: "tray.full")
+                    Label("CRM Messages", systemImage: "tray.full")
                 }
                 .tag(0)
             
@@ -19,7 +18,7 @@ struct MainTabView: View {
                 }
                 .tag(1)
         }
-        .accentColor(ERPTheme.accent)
+        .accentColor(CRMTheme.accent)
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 if let user = state.currentUser {
@@ -50,18 +49,23 @@ struct MainTabView: View {
             
             ToolbarItem(placement: .primaryAction) {
                 HStack {
-                    
                     Picker("Theme", selection: $state.selectedTheme) {
                         ForEach(UserThemePreference.allCases, id: \.self) { theme in
                             Text(theme.rawValue).tag(theme)
                         }
                     }
+                    .pickerStyle(.segmented)
+                    .frame(width: 180)
                     
+                    Picker("Language", selection: $state.selectedLanguage) {
+                        ForEach(LanguagePreference.allCases) { lang in
+                            Text(lang.displayName).tag(lang)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .frame(width: 120)
                 }
-                .pickerStyle(.segmented)
                 .padding()
-                .frame(width: 180, height: 25)
-                
             }
         }
     }

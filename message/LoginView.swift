@@ -2,7 +2,7 @@ import SwiftUI
 internal import UniformTypeIdentifiers
 
 struct LoginView: View {
-    @EnvironmentObject var state: ERPState
+    @EnvironmentObject var state: CRMState
     
     @State private var selectedFileURL: URL?
     @State private var password = ""
@@ -16,37 +16,38 @@ struct LoginView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80, height: 80)
-                .foregroundColor(ERPTheme.primaryText)
+                .foregroundColor(CRMTheme.primaryText)
             
-            Text("ERP Secure Login")
+            Text("CRM Secure Login")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .erpTextStyle()
+                .crmTextStyle()
             
             VStack(alignment: .leading, spacing: 10) {
                 Text("Private Key File")
                     .font(.headline)
-                    .erpTextStyle()
+                    .crmTextStyle()
                 
                 HStack {
                     Text(selectedFileURL?.lastPathComponent ?? "No file selected")
-                        .foregroundColor(selectedFileURL == nil ? ERPTheme.secondaryText : ERPTheme.primaryText)
+                        .foregroundColor(selectedFileURL == nil ? CRMTheme.secondaryText : CRMTheme.primaryText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-                        .background(ERPTheme.secondaryBackground.opacity(0.3))
+                        .background(CRMTheme.secondaryBackground.opacity(0.3))
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(ERPTheme.border, lineWidth: 1)
+                                .stroke(CRMTheme.border, lineWidth: 1)
                         )
                     
                     Button("Select File") {
                         isFileImporterPresented = true
                     }
+                    .buttonStyle(.plain)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 14)
-                    .background(ERPTheme.invertedBackground)
-                    .foregroundColor(ERPTheme.invertedText)
+                    .background(CRMTheme.invertedBackground)
+                    .foregroundColor(CRMTheme.invertedText)
                     .cornerRadius(8)
                     .fontWeight(.semibold)
                 }
@@ -56,16 +57,16 @@ struct LoginView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Password")
                     .font(.headline)
-                    .erpTextStyle()
+                    .crmTextStyle()
                 
                 SecureField("Enter password", text: $password)
                     .padding()
-                    .background(ERPTheme.secondaryBackground.opacity(0.3))
+                    .background(CRMTheme.secondaryBackground.opacity(0.3))
                     .cornerRadius(8)
-                    .foregroundColor(ERPTheme.primaryText)
+                    .foregroundColor(CRMTheme.primaryText)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(ERPTheme.border, lineWidth: 1)
+                            .stroke(CRMTheme.border, lineWidth: 1)
                     )
             }
             .frame(maxWidth: 400)
@@ -79,11 +80,12 @@ struct LoginView: View {
             Button("Read & Login") {
                 handleLogin()
             }
+            .buttonStyle(.plain)
             .disabled(selectedFileURL == nil || password.isEmpty)
             .frame(maxWidth: 400)
             .padding()
-            .background((selectedFileURL == nil || password.isEmpty) ? ERPTheme.secondaryBackground : ERPTheme.invertedBackground)
-            .foregroundColor((selectedFileURL == nil || password.isEmpty) ? ERPTheme.secondaryText : ERPTheme.invertedText)
+            .background((selectedFileURL == nil || password.isEmpty) ? CRMTheme.secondaryBackground : CRMTheme.invertedBackground)
+            .foregroundColor((selectedFileURL == nil || password.isEmpty) ? CRMTheme.secondaryText : CRMTheme.invertedText)
             .cornerRadius(8)
             .font(.title3.bold())
             .padding(.top, 10)
@@ -91,7 +93,7 @@ struct LoginView: View {
         }
         .padding(40)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .erpBackground()
+        .crmBackground()
         .fileImporter(isPresented: $isFileImporterPresented, allowedContentTypes: [.data, .plainText]) { result in
             switch result {
             case .success(let url):
@@ -115,5 +117,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView().environmentObject(ERPState())
+    LoginView().environmentObject(CRMState())
 }

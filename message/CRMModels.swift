@@ -120,3 +120,115 @@ struct Document: Identifiable, Hashable {
         )
     ]
 }
+
+// MARK: - Dynamic Templates
+
+enum FormFieldType: Hashable, Sendable {
+    case text
+    case date
+    case datetime
+    case number
+    case currency
+    case toggle
+    case dropdown(options: [String])
+    case searchDropdown(options: [String])
+}
+
+struct FormField: Identifiable, Hashable {
+    let id: UUID
+    let title: String
+    let type: FormFieldType
+    let isRequired: Bool
+    
+    init(id: UUID = UUID(), title: String, type: FormFieldType, isRequired: Bool = false) {
+        self.id = id
+        self.title = title
+        self.type = type
+        self.isRequired = isRequired
+    }
+}
+
+struct DocumentTemplate: Identifiable, Hashable {
+    let id: UUID = UUID()
+    let templateName: String
+    let iconName: String
+    let requiredFields: [FormField]
+    let description: String
+}
+
+struct TemplateCategory: Identifiable, Hashable {
+    let id: UUID = UUID()
+    let categoryName: String
+    let iconName: String
+    let templates: [DocumentTemplate]
+    
+    static let mockCategories: [TemplateCategory] = [
+        TemplateCategory(
+            categoryName: "Contracts",
+            iconName: "doc.text.fill",
+            templates: [
+                DocumentTemplate(
+                    templateName: "ZEN CRYPTED NDA",
+                    iconName: "lock.doc.fill",
+                    requiredFields: [
+                        FormField(title: "Company Name", type: .text, isRequired: true),
+                        FormField(title: "Counterparty Name", type: .text, isRequired: true),
+                        FormField(title: "Effective Date", type: .date, isRequired: true),
+                        FormField(title: "Jurisdiction", type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]), isRequired: true)
+                    ],
+                    description: "Standard Non-Disclosure Agreement for ZEN CRYPTED."
+                ),
+                DocumentTemplate(
+                    templateName: "Employment Contract",
+                    iconName: "person.text.rectangle.fill",
+                    requiredFields: [
+                        FormField(title: "Employee Name", type: .text, isRequired: true),
+                        FormField(title: "Role", type: .searchDropdown(options: ["Software Engineer", "Product Manager", "Designer", "Security Analyst"]), isRequired: true),
+                        FormField(title: "Start Date", type: .date, isRequired: true),
+                        FormField(title: "Salary (USD)", type: .currency, isRequired: true),
+                        FormField(title: "Equity Grant", type: .toggle, isRequired: false)
+                    ],
+                    description: "Standard employment agreement signed by Maxim Sokhatsky."
+                ),
+                DocumentTemplate(
+                    templateName: "Vendor SLA",
+                    iconName: "briefcase.fill",
+                    requiredFields: [
+                        FormField(title: "Vendor Name", type: .text, isRequired: true),
+                        FormField(title: "Service Type", type: .dropdown(options: ["Cloud Hosting", "IT Support", "Consulting", "Marketing"]), isRequired: true),
+                        FormField(title: "Monthly Value", type: .currency, isRequired: true),
+                        FormField(title: "Review Date", type: .datetime, isRequired: false)
+                    ],
+                    description: "Service Level Agreement for external contractors."
+                )
+            ]
+        ),
+        TemplateCategory(
+            categoryName: "Memos",
+            iconName: "note.text",
+            templates: [
+                DocumentTemplate(
+                    templateName: "CEO Announcement",
+                    iconName: "megaphone.fill",
+                    requiredFields: [
+                        FormField(title: "Subject", type: .text, isRequired: true),
+                        FormField(title: "Date", type: .date, isRequired: true),
+                        FormField(title: "Target Department", type: .dropdown(options: ["All Company", "Engineering", "Sales", "Executive"]), isRequired: true)
+                    ],
+                    description: "Official internal announcement from Maxim Sokhatsky."
+                ),
+                DocumentTemplate(
+                    templateName: "Security Incident Report",
+                    iconName: "exclamationmark.shield.fill",
+                    requiredFields: [
+                        FormField(title: "Incident Type", type: .searchDropdown(options: ["Data Breach", "DDoS Attack", "Malware", "Phishing"]), isRequired: true),
+                        FormField(title: "Time Detected", type: .datetime, isRequired: true),
+                        FormField(title: "Severity", type: .dropdown(options: ["Low", "Medium", "High", "Critical"]), isRequired: true),
+                        FormField(title: "Resolved", type: .toggle, isRequired: false)
+                    ],
+                    description: "Internal report for tracking security breaches."
+                )
+            ]
+        )
+    ]
+}

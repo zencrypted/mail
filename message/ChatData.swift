@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-enum Topic: String, Codable, CaseIterable, Identifiable {
+enum Topic: String, Codable, CaseIterable, Identifiable, Sendable {
     case control        = "npg.control"         // 1  — announcements, key exchange
     case pli            = "npg.pli"             // 6  — position/velocity (probably not for chat app)
     case surveillance   = "npg.surveillance"    // 7
@@ -29,7 +29,7 @@ enum Topic: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-struct Participant: Identifiable, Equatable, Hashable {
+struct Participant: Identifiable, Equatable, Hashable, Sendable {
     let id: String = UUID().uuidString
     var displayName: String?
     var avatarURL: URL?
@@ -49,7 +49,7 @@ struct Participant: Identifiable, Equatable, Hashable {
     }
 }
 
-struct Conversation: Identifiable, Hashable {
+struct Conversation: Identifiable, Hashable, Sendable {
     let id: String = UUID().uuidString
     var participants: [Participant]
     var messages: [Message]
@@ -68,7 +68,7 @@ struct Conversation: Identifiable, Hashable {
         }
 }
 
-struct Message: Identifiable, Hashable {
+struct Message: Identifiable, Hashable, Sendable {
     let id: String = UUID().uuidString
     var text: String
     var createdAt: Date
@@ -78,7 +78,7 @@ struct Message: Identifiable, Hashable {
     var reactions: [Reaction]? = []
 }
 
-struct Attachment: Identifiable, Hashable {
+struct Attachment: Identifiable, Hashable, Sendable {
     let id: String
     var width: Int
     var height: Int
@@ -89,13 +89,13 @@ struct Attachment: Identifiable, Hashable {
     var thumbnails: [Thumbnail]? = []
 }
 
-struct Thumbnail: Hashable {
+struct Thumbnail: Hashable, Sendable {
     var width: Int
     var height: Int
     var url: String
 }
 
-struct Reaction: Identifiable, Hashable {
+struct Reaction: Identifiable, Hashable, Sendable {
     let id: UUID
     var message: Message
     var author: Participant

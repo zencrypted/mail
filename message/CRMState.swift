@@ -16,13 +16,52 @@ enum UserThemePreference: String, CaseIterable {
     }
 }
 
-/// Global state to manage the ERP App
-class ERPState: ObservableObject {
+enum LanguagePreference: String, CaseIterable, Identifiable {
+    case english = "en"
+    case ukrainian = "uk"
+    case arabic = "ar"
+    
+    var id: String { rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .english: return "English"
+        case .ukrainian: return "Українська"
+        case .arabic: return "العربية"
+        }
+    }
+    
+    var layoutDirection: LayoutDirection {
+        self == .arabic ? .rightToLeft : .leftToRight
+    }
+}
+
+enum DocumentColumn: String, CaseIterable, Identifiable {
+    case type = "Type"
+    case initiator = "Initiator"
+    case addressedTo = "Addressed To"
+    case stage = "Stage"
+    case number = "Number"
+    case date = "Date"
+    case correspondent = "Correspondent"
+    case summary = "Summary"
+    case outNumber = "Out Number"
+    
+    var id: String { rawValue }
+}
+
+/// Global state to manage the CRM App
+class CRMState: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var currentUser: UserProfile? = nil
     
     // Theme
+    // Theme & Language
     @Published var selectedTheme: UserThemePreference = .system
+    @Published var selectedLanguage: LanguagePreference = .english
+    
+    // Wizard Form Navigation State
+    @Published var selectedTab: Int = 0
     
     // View Filters
     @Published var documentFilter: String = "All"
@@ -32,6 +71,9 @@ class ERPState: ObservableObject {
     
     // Multi-Selection State
     @Published var selectedDocuments: Set<Document.ID> = []
+    
+    // Column Visibility State
+    @Published var visibleColumns: Set<DocumentColumn> = Set(DocumentColumn.allCases)
     
     // Column Filters
     @Published var typeFilter: String = ""
