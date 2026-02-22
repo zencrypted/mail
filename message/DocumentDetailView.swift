@@ -14,24 +14,24 @@ struct DocumentDetailView: View {
                         .font(.headline)
                         .padding(.vertical, 8)
                         .frame(maxWidth: .infinity)
-                        .background(ERPTheme.secondaryBackground)
-                        .foregroundColor(ERPTheme.primaryText)
+                        .background(CRMTheme.secondaryBackground)
+                        .foregroundColor(CRMTheme.primaryText)
                     
                     NativePDFView(url: document.pdfURL, defaultData: Data(base64Encoded: dummyPDFBase64))
                         .background(Color.gray.opacity(0.2)) // Give some visual border for the document
-                        .border(ERPTheme.border, width: 0.0)
+                        .border(CRMTheme.border, width: 0.0)
                 }
                 .frame(width: proxy.size.width * 0.6)
-                .background(ERPTheme.invertedBackground)
+                .background(CRMTheme.invertedBackground)
                 
                 Divider()
-                    .background(ERPTheme.border)
+                    .background(CRMTheme.border)
                 
                 // Right pane: Form / Controls
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Document Form")
                         .font(.title2.bold())
-                        .erpTextStyle()
+                        .crmTextStyle()
                     
                     Group {
                         detailRow(title: "Type", value: document.type)
@@ -54,7 +54,7 @@ struct DocumentDetailView: View {
                 }
                 .padding()
                 .frame(width: proxy.size.width * 0.4, alignment: .topLeading)
-                .erpBackground()
+                .crmBackground()
             }
         }
     }
@@ -63,12 +63,12 @@ struct DocumentDetailView: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
                 .font(.caption)
-                .foregroundColor(ERPTheme.secondaryText)
+                .foregroundColor(CRMTheme.secondaryText)
             Text(value)
                 .font(.body)
-                .erpTextStyle()
+                .crmTextStyle()
             Divider()
-                .background(ERPTheme.border)
+                .background(CRMTheme.border)
         }
     }
     

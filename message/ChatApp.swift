@@ -7,21 +7,31 @@ import CoreData
 @main
 struct ChatApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject private var erpState = ERPState()
+    @StateObject private var crmState = CRMState()
 
     var body: some Scene {
         WindowGroup {
             Group {
-                if erpState.isLoggedIn {
+                if crmState.isLoggedIn {
                     MainTabView()
                 } else {
                     LoginView()
                 }
             }
-            .environmentObject(erpState)
+            .environmentObject(crmState)
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            .preferredColorScheme(erpState.selectedTheme.colorScheme)
+            .environment(\.locale, Locale(identifier: crmState.selectedLanguage.rawValue))
+            .environment(\.layoutDirection, crmState.selectedLanguage.layoutDirection)
+            .preferredColorScheme(crmState.selectedTheme.colorScheme)
         }
+        
+        WindowGroup(id: "inboxWindow", for: String.self) { $folderId in
+            if let id = folderId, let folder = InboxFolder.mockFolders.first(where: { $0.id == id }) {
+                StandaloneInboxWindow(folder: folder, theme: crmState.selectedTheme)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
+        }
+        #if os(macOS)
         .commands {
             // macOS Window Management & Shortcuts
             CommandGroup(replacing: .newItem) {
@@ -36,9 +46,9 @@ struct ChatApp: App {
                 .keyboardShortcut("o", modifiers: .command)
             }
             
-            CommandMenu("ERP Users") {
+            CommandMenu("CRM Users") {
                 Button("Switch User...") {
-                    erpState.logout()
+                    crmState.logout()
                 }
                 .keyboardShortcut("u", modifiers: [.command, .shift])
             }
@@ -55,5 +65,24 @@ struct ChatApp: App {
                 .keyboardShortcut("2", modifiers: .command)
             }
         }
+        #endif
+    }
+}
+
+/// A wrapper to provide a localized CRMState for a standalone window (tab) so 
+/// selecting items doesn't interfere with the main window's selection state.
+struct StandaloneInboxWindow: View {
+    let folder: InboxFolder
+    let theme: UserThemePreference
+    @StateObject private var localState = CRMState()
+    
+    var body: some View {
+        MainTabView()
+            .environmentObject(localState)
+            .preferredColorScheme(theme.colorScheme)
+            .onAppear {
+                localState.loadMockData()
+                localState.selectedInbox = folder
+            }
     }
 }

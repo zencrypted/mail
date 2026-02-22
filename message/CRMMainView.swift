@@ -1,7 +1,8 @@
 import SwiftUI
 
-struct ERPMainView: View {
-    @EnvironmentObject var state: ERPState
+struct CRMMainView: View {
+    @EnvironmentObject var state: CRMState
+    @Environment(\.openWindow) private var openWindow
     
     // Sort orders for table
     @State private var sortOrder = [KeyPathComparator(\Document.date, order: .reverse)]
@@ -15,13 +16,13 @@ struct ERPMainView: View {
             detailColumn
         }
         .navigationSplitViewStyle(.balanced)
-        .erpBackground()
+        .crmBackground()
     }
     
     @ViewBuilder
     private var sidebar: some View {
         List(selection: $state.selectedInbox) {
-            Section(header: Text("Inboxes").foregroundColor(ERPTheme.secondaryText)) {
+            Section(header: Text("Inboxes").foregroundColor(CRMTheme.secondaryText)) {
                 ForEach(InboxFolder.mockFolders) { folder in
                     NavigationLink(value: folder) {
                         HStack {
@@ -39,14 +40,30 @@ struct ERPMainView: View {
                                     .clipShape(Capsule())
                             }
                         }
-                        .foregroundColor(ERPTheme.primaryText)
+                        .foregroundColor(CRMTheme.primaryText)
                     }
-                    .listRowBackground(state.selectedInbox?.id == folder.id ? ERPTheme.secondaryBackground : ERPTheme.primaryBackground)
+                    .contextMenu {
+                        Button {
+                            // Trigger new document creation for this inbox
+                            state.selectedInbox = folder
+                            state.selectedTab = 1
+                        } label: {
+                            Label("New Document", systemImage: "doc.badge.plus")
+                        }
+                        
+                        Button {
+                            // macOS native way to handle "New Tab" requests
+                            openWindow(id: "inboxWindow", value: folder.id)
+                        } label: {
+                            Label("Open in New Tab", systemImage: "plus.rectangle.on.rectangle")
+                        }
+                    }
+                    .listRowBackground(state.selectedInbox?.id == folder.id ? CRMTheme.secondaryBackground : CRMTheme.primaryBackground)
                 }
             }
         }
         .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
-        .background(ERPTheme.primaryBackground)
+        .background(CRMTheme.primaryBackground)
         .scrollContentBackground(.hidden)
     }
     
@@ -70,7 +87,7 @@ struct ERPMainView: View {
             HStack {
                 Text(state.selectedInbox?.name ?? "Select an Inbox")
                     .font(.title2.bold())
-                    .foregroundColor(ERPTheme.primaryText)
+                    .foregroundColor(CRMTheme.primaryText)
                 
                 Spacer()
                 
@@ -88,36 +105,56 @@ struct ERPMainView: View {
                 Button(action: {}) {
                     Label("Sign", systemImage: "signature")
                 }
-                Button(action: {
-                    // Create a new document / view
-                    if let firstDoc = Document.mockDocuments.first {
-                        state.selectedDocuments = [firstDoc.id]
+                Menu {
+                    ForEach(DocumentColumn.allCases) { column in
+                        Button {
+                            if state.visibleColumns.contains(column) {
+                                state.visibleColumns.remove(column)
+                            } else {
+                                state.visibleColumns.insert(column)
+                            }
+                        } label: {
+                            HStack {
+                                Text(column.rawValue)
+                                if state.visibleColumns.contains(column) {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
                     }
+                } label: {
+                    Label("Columns", systemImage: "tablecells")
+                }
+                
+                Button(action: {
+                    // Open Wizard in the Forms Tab
+                    state.selectedTab = 1
                 }) {
                     Label("New Document", systemImage: "doc.badge.plus")
                 }
             }
             .padding()
-            .background(ERPTheme.secondaryBackground.opacity(0.3))
-            .border(ERPTheme.border, width: 0.0)
+            .background(CRMTheme.secondaryBackground.opacity(0.3))
+            .border(CRMTheme.border, width: 0.0)
             
             // Per-Column Filter Bar
             HStack(spacing: 8) {
                 Spacer().frame(width: 30) // Offset for checkbox column
                 Image(systemName: "line.3.horizontal.decrease.circle")
-                    .foregroundColor(ERPTheme.secondaryText)
-                TextField("Type", text: $state.typeFilter).textFieldStyle(.roundedBorder)
-                TextField("Initiator", text: $state.initiatorFilter).textFieldStyle(.roundedBorder)
-                TextField("To...", text: $state.addressedToFilter).textFieldStyle(.roundedBorder)
-               // TextField("Stage", text: $state.stageFilter).textFieldStyle(.roundedBorder)
-               // TextField("Number", text: $state.numberFilter).textFieldStyle(.roundedBorder)
-               // TextField("Correspondent", text: $state.correspondentFilter).textFieldStyle(.roundedBorder)
-               // TextField("Summary", text: $state.summaryFilter).textFieldStyle(.roundedBorder)
-               // TextField("Out Num", text: $state.outNumberFilter).textFieldStyle(.roundedBorder)
+                    .foregroundColor(CRMTheme.secondaryText)
+                if state.visibleColumns.contains(.type) { TextField("Type", text: $state.typeFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.initiator) { TextField("Initiator", text: $state.initiatorFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.addressedTo) { TextField("To...", text: $state.addressedToFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.stage) { TextField("Stage", text: $state.stageFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.number) { TextField("Number", text: $state.numberFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.date) { Spacer().frame(width: 80) /* Placeholder for Date since it's not filtered directly by text here usually, or add a text filter if desired */ }
+                if state.visibleColumns.contains(.correspondent) { TextField("Correspondent", text: $state.correspondentFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.summary) { TextField("Summary", text: $state.summaryFilter).textFieldStyle(.roundedBorder) }
+                if state.visibleColumns.contains(.outNumber) { TextField("Out Num", text: $state.outNumberFilter).textFieldStyle(.roundedBorder) }
             }
             .padding()
-            .background(ERPTheme.secondaryBackground.opacity(0.3))
-            .border(ERPTheme.border, width: 0.0)
+            .background(CRMTheme.secondaryBackground.opacity(0.3))
+            .border(CRMTheme.border, width: 0.0)
 
             // Advanced Table with specific requested columns supporting multi-selection
             Table(filteredDocs, selection: $state.selectedDocuments, sortOrder: $sortOrder) {
@@ -136,19 +173,39 @@ struct ERPMainView: View {
                 }
                 .width(20)
                 
-                TableColumn("Type", value: \.type)
-                TableColumn("Initiator", value: \.initiator)
-                TableColumn("Addressed to", value: \.addressedTo)
-                //TableColumn("Stage", value: \.stage)
-                //TableColumn("Number", value: \.documentNumber)
-                TableColumn("Date", value: \.date) { doc in
-                    Text(doc.date, style: .date)
+                if state.visibleColumns.contains(.type) {
+                    TableColumn("Type", value: \.type)
                 }
-                //TableColumn("Correspondent", value: \.correspondent)
-                //TableColumn("Summary", value: \.shortSummary)
-                //TableColumn("Out Number", value: \.outgoingNumber)
+                if state.visibleColumns.contains(.initiator) {
+                    TableColumn("Initiator", value: \.initiator)
+                }
+                if state.visibleColumns.contains(.addressedTo) {
+                    TableColumn("Addressed to", value: \.addressedTo)
+                }
+                if state.visibleColumns.contains(.stage) {
+                    TableColumn("Stage", value: \.stage)
+                }
+                if state.visibleColumns.contains(.number) {
+                    TableColumn("Number", value: \.documentNumber)
+                }
+                if state.visibleColumns.contains(.date) {
+                    TableColumn("Date", value: \.date) { doc in
+                        Text(doc.date, style: .date)
+                    }
+                }
+                if state.visibleColumns.contains(.correspondent) {
+                    TableColumn("Correspondent", value: \.correspondent)
+                }
+                if state.visibleColumns.contains(.summary) {
+                    TableColumn("Summary", value: \.shortSummary)
+                }
+                if state.visibleColumns.contains(.outNumber) {
+                    TableColumn("Out Number", value: \.outgoingNumber)
+                }
             }
+            #if os(macOS)
             .tableStyle(.bordered)
+            #endif
         }
         .navigationSplitViewColumnWidth(min: 500, ideal: 800)
     }
@@ -161,10 +218,10 @@ struct ERPMainView: View {
             VStack(spacing: 20) {
                 Image(systemName: "square.stack.3d.up.fill")
                     .font(.system(size: 60))
-                    .foregroundColor(ERPTheme.accent)
+                    .foregroundColor(CRMTheme.accent)
                 Text("\(state.selectedDocuments.count) Documents Selected")
                     .font(.title)
-                    .foregroundColor(ERPTheme.primaryText)
+                    .foregroundColor(CRMTheme.primaryText)
                 
                 Button("Batch Sign") {
                     // Logic to batched sign
@@ -172,18 +229,18 @@ struct ERPMainView: View {
                 .buttonStyle(.borderedProminent)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .erpBackground()
+            .crmBackground()
         } else {
             VStack {
                 Image(systemName: "doc.text.magnifyingglass")
                     .font(.system(size: 60))
-                    .foregroundColor(ERPTheme.secondaryText)
+                    .foregroundColor(CRMTheme.secondaryText)
                 Text("Select a document to view details")
-                    .foregroundColor(ERPTheme.secondaryText)
+                    .foregroundColor(CRMTheme.secondaryText)
                     .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .erpBackground()
+            .crmBackground()
         }
     }
 }
