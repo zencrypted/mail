@@ -54,17 +54,18 @@ struct MainTabView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .frame(width: 180)
-                    
+                    .frame(width: 180, height: 25)
+                
                     Picker("Language", selection: $state.selectedLanguage) {
                         ForEach(LanguagePreference.allCases) { lang in
                             Text(lang.displayName).tag(lang)
                         }
                     }
                     .pickerStyle(.menu)
-                    .frame(width: 120)
+                    .frame(width: 120, height: 20)
                 }
-                .padding()
+                
+                
             }
         }
     }
