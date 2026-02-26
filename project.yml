@@ -19,3 +19,4 @@ targets:
       SWIFT_VERSION: 6.2
     dependencies:
       - sdk: CoreData.framework
+      - sdk: SwiftData.framework

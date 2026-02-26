@@ -1,12 +1,12 @@
-import Foundation
 import Combine
+import Foundation
 import SwiftUI
 
 enum UserThemePreference: String, CaseIterable {
     case system = "System"
     case light = "Light"
     case dark = "Dark"
-    
+
     var colorScheme: ColorScheme? {
         switch self {
         case .system: return nil
@@ -20,9 +20,9 @@ enum LanguagePreference: String, CaseIterable, Identifiable {
     case english = "en"
     case ukrainian = "uk"
     case arabic = "ar"
-    
+
     var id: String { rawValue }
-    
+
     var displayName: String {
         switch self {
         case .english: return "English"
@@ -30,7 +30,7 @@ enum LanguagePreference: String, CaseIterable, Identifiable {
         case .arabic: return "العربية"
         }
     }
-    
+
     var layoutDirection: LayoutDirection {
         self == .arabic ? .rightToLeft : .leftToRight
     }
@@ -46,35 +46,54 @@ enum DocumentColumn: String, CaseIterable, Identifiable {
     case correspondent = "Correspondent"
     case summary = "Summary"
     case outNumber = "Out Number"
-    
+
     var id: String { rawValue }
+}
+
+enum ContentPanel: String, CaseIterable, Identifiable {
+    case messages = "Messages"
+    case pdfViewer = "PDF Viewer"
+    case attributes = "Attributes"
+
+    var id: String { rawValue }
+
+    var icon: String {
+        switch self {
+        case .messages: "tray.full"
+        case .pdfViewer: "doc.richtext"
+        case .attributes: "list.clipboard"
+        }
+    }
 }
 
 /// Global state to manage the CRM App
 class CRMState: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var currentUser: UserProfile? = nil
-    
+
     // Theme
     // Theme & Language
     @Published var selectedTheme: UserThemePreference = .system
     @Published var selectedLanguage: LanguagePreference = .english
-    
+
     // Wizard Form Navigation State
     @Published var selectedTab: Int = 0
-    
+
+    // Active Content Panel
+    @Published var activePanel: ContentPanel = .messages
+
     // View Filters
     @Published var documentFilter: String = "All"
-    
+
     // Navigation State
     @Published var selectedInbox: InboxFolder? = nil
-    
+
     // Multi-Selection State
     @Published var selectedDocuments: Set<Document.ID> = []
-    
+
     // Column Visibility State
     @Published var visibleColumns: Set<DocumentColumn> = Set(DocumentColumn.allCases)
-    
+
     // Column Filters
     @Published var typeFilter: String = ""
     @Published var initiatorFilter: String = ""
@@ -84,16 +103,19 @@ class CRMState: ObservableObject {
     @Published var correspondentFilter: String = ""
     @Published var summaryFilter: String = ""
     @Published var outNumberFilter: String = ""
-    
+
     // Tabs
     @Published var openDocuments: [Document] = []
-    
+
+    // Data Store
+    @Published var store = MockDataStore.shared
+
     // Mock Data loading
     func loadMockData() {
         self.currentUser = UserProfile.mock
         self.isLoggedIn = true
     }
-    
+
     func logout() {
         self.currentUser = nil
         self.isLoggedIn = false

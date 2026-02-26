@@ -3,7 +3,7 @@ import SwiftUI
 /// Main container for the CRM system, loaded after successful login.
 struct MainTabView: View {
     @EnvironmentObject var state: CRMState
-    
+
     var body: some View {
         TabView(selection: $state.selectedTab) {
             CRMMainView()
@@ -16,6 +16,11 @@ struct MainTabView: View {
                     Label("Create", systemImage: "list.clipboard")
                 }
                 .tag(1)
+            RMKDashboardView()
+                .tabItem {
+                    Label("RMK", systemImage: "chart.bar.doc.horizontal")
+                }
+                .tag(2)
         }
         .accentColor(CRMTheme.accent)
         .toolbar {
@@ -34,7 +39,7 @@ struct MainTabView: View {
                     .frame(width: 250, height: 25)
                 }
             }
-            
+
             ToolbarItem(placement: .principal) {
                 Picker("Filter", selection: $state.documentFilter) {
                     Text("All").tag("All")
@@ -45,7 +50,7 @@ struct MainTabView: View {
                 .padding()
                 .frame(width: 230, height: 25)
             }
-            
+
             ToolbarItem(placement: .primaryAction) {
                 HStack {
                     Picker("Theme", selection: $state.selectedTheme) {
@@ -55,7 +60,7 @@ struct MainTabView: View {
                     }
                     .pickerStyle(.segmented)
                     .frame(width: 180, height: 25)
-                
+
                     Picker("Language", selection: $state.selectedLanguage) {
                         ForEach(LanguagePreference.allCases) { lang in
                             Text(lang.displayName).tag(lang)
@@ -64,8 +69,7 @@ struct MainTabView: View {
                     .pickerStyle(.menu)
                     .frame(width: 120, height: 20)
                 }
-                
-                
+
             }
         }
     }

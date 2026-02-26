@@ -1,13 +1,22 @@
 // ChatApp.swift
 // Copyright (c) 2026 Namdak Tonpa
 
-import SwiftUI
 import CoreData
+import SwiftData
+import SwiftUI
 
 @main
 struct ChatApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject private var crmState = CRMState()
+
+    var rmkContainer: ModelContainer {
+        do {
+            return try ModelContainer(for: RMKDocument.self)
+        } catch {
+            fatalError("Failed to create RMK ModelContainer: \(error)")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -23,59 +32,62 @@ struct ChatApp: App {
             .environment(\.locale, Locale(identifier: crmState.selectedLanguage.rawValue))
             .environment(\.layoutDirection, crmState.selectedLanguage.layoutDirection)
             .preferredColorScheme(crmState.selectedTheme.colorScheme)
+            .modelContainer(for: RMKDocument.self)
         }
-        
+
         WindowGroup(id: "inboxWindow", for: String.self) { $folderId in
-            if let id = folderId, let folder = InboxFolder.mockFolders.first(where: { $0.id == id }) {
+            if let id = folderId, let folder = InboxFolder.mockFolders.first(where: { $0.id == id })
+            {
                 StandaloneInboxWindow(folder: folder, theme: crmState.selectedTheme)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(
+                        \.managedObjectContext, persistenceController.container.viewContext)
             }
         }
         #if os(macOS)
-        .commands {
-            // macOS Window Management & Shortcuts
-            CommandGroup(replacing: .newItem) {
-                Button("New Document") {
-                    // Trigger new document logic
+            .commands {
+                // macOS Window Management & Shortcuts
+                CommandGroup(replacing: .newItem) {
+                    Button("New Document") {
+                        // Trigger new document logic
+                    }
+                    .keyboardShortcut("n", modifiers: .command)
+
+                    Button("Open File...") {
+                        // Trigger file open
+                    }
+                    .keyboardShortcut("o", modifiers: .command)
                 }
-                .keyboardShortcut("n", modifiers: .command)
-                
-                Button("Open File...") {
-                    // Trigger file open
+
+                CommandMenu("Directory") {
+                    Button("Switch User...") {
+                        crmState.logout()
+                    }
+                    .keyboardShortcut("u", modifiers: [.command, .shift])
                 }
-                .keyboardShortcut("o", modifiers: .command)
+
+                CommandGroup(replacing: .windowList) {
+                    Button("Show Inboxes") {
+                        // Handle window bring to front
+                    }
+                    .keyboardShortcut("1", modifiers: .command)
+
+                    Button("Show Forms") {
+                        // Handle window bring to front
+                    }
+                    .keyboardShortcut("2", modifiers: .command)
+                }
             }
-            
-            CommandMenu("Directory") {
-                Button("Switch User...") {
-                    crmState.logout()
-                }
-                .keyboardShortcut("u", modifiers: [.command, .shift])
-            }
-            
-            CommandGroup(replacing: .windowList) {
-                Button("Show Inboxes") {
-                    // Handle window bring to front
-                }
-                .keyboardShortcut("1", modifiers: .command)
-                
-                Button("Show Forms") {
-                    // Handle window bring to front
-                }
-                .keyboardShortcut("2", modifiers: .command)
-            }
-        }
         #endif
     }
 }
 
-/// A wrapper to provide a localized CRMState for a standalone window (tab) so 
+/// A wrapper to provide a localized CRMState for a standalone window (tab) so
 /// selecting items doesn't interfere with the main window's selection state.
 struct StandaloneInboxWindow: View {
     let folder: InboxFolder
     let theme: UserThemePreference
     @StateObject private var localState = CRMState()
-    
+
     var body: some View {
         MainTabView()
             .environmentObject(localState)
