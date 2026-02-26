@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		61B351DF2F106EEB00E6AD21 /* Message.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Message.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		61B351F12F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Message.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		61B351FB2F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Message.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351DF2F106EEB00E6AD21 /* Message.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Message.app; path = "Mail X.420.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351F12F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Message.xctest; path = "Mail X.420.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351FB2F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Message.xctest; path = "Mail X.420.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -114,7 +114,7 @@
 			packageProductDependencies = (
 			);
 			productName = mail;
-			productReference = 61B351DF2F106EEB00E6AD21 /* Mail.app */;
+			productReference = 61B351DF2F106EEB00E6AD21 /* Message.app */;
 			productType = "com.apple.product-type.application";
 		};
 		61B351F02F106EEC00E6AD21 /* MailTests */ = {
