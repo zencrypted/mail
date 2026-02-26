@@ -8,8 +8,9 @@ struct UserProfile: Identifiable, Hashable {
     let name: String
     let role: String
     let organization: String
-    
-    static let mock = UserProfile(id: UUID(), name: "Max Socha", role: "CEO", organization: "Zen Crypted")
+
+    static let mock = UserProfile(
+        id: UUID(), name: "Max Socha", role: "CEO", organization: "Zen Crypted")
 }
 
 // MARK: - Inbox Folder
@@ -20,24 +21,56 @@ struct InboxFolder: Identifiable, Hashable {
     let iconName: String
     var incomingCounter: Int
     var badgeColor: Color
-    
+
     static let mockFolders: [InboxFolder] = [
-        InboxFolder(id: "for_me", name: "Inbox", iconName: "tray.and.arrow.down", incomingCounter: 12, badgeColor: .blue),
-        InboxFolder(id: "for_execution", name: "Execution", iconName: "doc.badge.gearshape", incomingCounter: 5, badgeColor: .orange),
-        InboxFolder(id: "for_approval", name: "Approval", iconName: "checkmark.seal", incomingCounter: 3, badgeColor: .green),
-        InboxFolder(id: "for_agreement", name: "Agreement", iconName: "hand.raised", incomingCounter: 1, badgeColor: .teal),
-        InboxFolder(id: "for_signing", name: "Signing", iconName: "signature", incomingCounter: 8, badgeColor: .purple),
-        InboxFolder(id: "for_acknowledge", name: "Acknowledge", iconName: "eye", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "my_resolution", name: "Resolution", iconName: "text.badge.checkmark", incomingCounter: 2, badgeColor: .cyan),
-        InboxFolder(id: "first_view", name: "Initial", iconName: "01.circle", incomingCounter: 4, badgeColor: .indigo),
-        InboxFolder(id: "on_control", name: "Control", iconName: "lock.shield", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "urgent", name: "Urgent", iconName: "exclamationmark.triangle", incomingCounter: 7, badgeColor: .red),
-        InboxFolder(id: "created_by_me", name: "Originated", iconName: "doc.badge.plus", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "rejected", name: "Rejected", iconName: "arrow.uturn.backward", incomingCounter: 1, badgeColor: .yellow),
-        InboxFolder(id: "returned", name: "Returned", iconName: "arrow.uturn.forward", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "from_me", name: "Outbox", iconName: "paperplane", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "finished", name: "Finished", iconName: "archivebox", incomingCounter: 0, badgeColor: .gray),
-        InboxFolder(id: "favorite", name: "Favorite", iconName: "star", incomingCounter: 2, badgeColor: .yellow)
+        InboxFolder(
+            id: "for_me", name: "Inbox", iconName: "tray.and.arrow.down", incomingCounter: 12,
+            badgeColor: .blue),
+        InboxFolder(
+            id: "for_execution", name: "Execution", iconName: "doc.badge.gearshape",
+            incomingCounter: 5, badgeColor: .orange),
+        InboxFolder(
+            id: "for_approval", name: "Approval", iconName: "checkmark.seal", incomingCounter: 3,
+            badgeColor: .green),
+        InboxFolder(
+            id: "for_agreement", name: "Agreement", iconName: "hand.raised", incomingCounter: 1,
+            badgeColor: .teal),
+        InboxFolder(
+            id: "for_signing", name: "Signing", iconName: "signature", incomingCounter: 8,
+            badgeColor: .purple),
+        InboxFolder(
+            id: "for_acknowledge", name: "Acknowledge", iconName: "eye", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "my_resolution", name: "Resolution", iconName: "text.badge.checkmark",
+            incomingCounter: 2, badgeColor: .cyan),
+        InboxFolder(
+            id: "first_view", name: "Initial", iconName: "01.circle", incomingCounter: 4,
+            badgeColor: .indigo),
+        InboxFolder(
+            id: "on_control", name: "Control", iconName: "lock.shield", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "urgent", name: "Urgent", iconName: "exclamationmark.triangle", incomingCounter: 7,
+            badgeColor: .red),
+        InboxFolder(
+            id: "created_by_me", name: "Originated", iconName: "doc.badge.plus", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "rejected", name: "Rejected", iconName: "arrow.uturn.backward", incomingCounter: 1,
+            badgeColor: .yellow),
+        InboxFolder(
+            id: "returned", name: "Returned", iconName: "arrow.uturn.forward", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "from_me", name: "Outbox", iconName: "paperplane", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "finished", name: "Finished", iconName: "archivebox", incomingCounter: 0,
+            badgeColor: .gray),
+        InboxFolder(
+            id: "favorite", name: "Favorite", iconName: "star", incomingCounter: 2,
+            badgeColor: .yellow),
     ]
 }
 
@@ -45,18 +78,18 @@ struct InboxFolder: Identifiable, Hashable {
 
 struct Document: Identifiable, Hashable {
     let id: UUID
-    let type: String
-    let initiator: String
-    let addressedTo: String
-    let stage: String
-    let documentNumber: String
-    let date: Date
-    let correspondent: String
-    let shortSummary: String
-    let outgoingNumber: String
-    
-    var pdfURL: URL? // URL to the scanned pdf
-    
+    var type: String
+    var initiator: String
+    var addressedTo: String
+    var stage: String
+    var documentNumber: String
+    var date: Date
+    var correspondent: String
+    var shortSummary: String
+    var outgoingNumber: String
+
+    var pdfURL: URL?  // URL to the scanned pdf
+
     static let mockDocuments: [Document] = [
         Document(
             id: UUID(),
@@ -117,7 +150,127 @@ struct Document: Identifiable, Hashable {
             correspondent: "External Counsel",
             shortSummary: "Response to compliance inquiry.",
             outgoingNumber: "OUT-088-L"
-        )
+        ),
+        Document(
+            id: UUID(),
+            type: "Directive",
+            initiator: "Maxim Sokhatsky",
+            addressedTo: "All Departments",
+            stage: "Active",
+            documentNumber: "DIR-2026-003",
+            date: Date().addingTimeInterval(-259200),
+            correspondent: "Internal",
+            shortSummary: "New security protocols for Q1 2026.",
+            outgoingNumber: "N/A"
+        ),
+        Document(
+            id: UUID(),
+            type: "Contract",
+            initiator: "Procurement",
+            addressedTo: "Maxim Sokhatsky",
+            stage: "For Signing",
+            documentNumber: "CTR-2026-015",
+            date: Date().addingTimeInterval(-43200),
+            correspondent: "CloudServe Ltd",
+            shortSummary: "Cloud infrastructure hosting agreement.",
+            outgoingNumber: "OUT-015-C"
+        ),
+        Document(
+            id: UUID(),
+            type: "NDA",
+            initiator: "Legal Dept",
+            addressedTo: "Alice Smith",
+            stage: "Pending Signature",
+            documentNumber: "NDA-2026-007",
+            date: Date().addingTimeInterval(-518400),
+            correspondent: "Partner Corp",
+            shortSummary: "Non-disclosure agreement for joint project.",
+            outgoingNumber: "OUT-007-N"
+        ),
+        Document(
+            id: UUID(),
+            type: "Invoice",
+            initiator: "Finance Dept",
+            addressedTo: "Accounting",
+            stage: "For Approval",
+            documentNumber: "INV-5600",
+            date: Date().addingTimeInterval(-604800),
+            correspondent: "DataCenter Pro",
+            shortSummary: "Monthly server hosting fees - January.",
+            outgoingNumber: "OUT-100-F"
+        ),
+        Document(
+            id: UUID(),
+            type: "Report",
+            initiator: "Security Team",
+            addressedTo: "Maxim Sokhatsky",
+            stage: "For Review",
+            documentNumber: "SEC-2026-001",
+            date: Date().addingTimeInterval(-7200),
+            correspondent: "Internal Audit",
+            shortSummary: "Annual security audit findings and recommendations.",
+            outgoingNumber: "N/A"
+        ),
+        Document(
+            id: UUID(),
+            type: "Memo",
+            initiator: "IT Department",
+            addressedTo: "All Employees",
+            stage: "For Acknowledge",
+            documentNumber: "MEM-2026-045",
+            date: Date().addingTimeInterval(-14400),
+            correspondent: "Internal",
+            shortSummary: "Scheduled maintenance window notification.",
+            outgoingNumber: "N/A"
+        ),
+        Document(
+            id: UUID(),
+            type: "Contract",
+            initiator: "HR Dept",
+            addressedTo: "Eva Martinez",
+            stage: "Active",
+            documentNumber: "EMP-2026-022",
+            date: Date().addingTimeInterval(-1_296_000),
+            correspondent: "Internal",
+            shortSummary: "Employment agreement for Senior Developer.",
+            outgoingNumber: "N/A"
+        ),
+        Document(
+            id: UUID(),
+            type: "Letter",
+            initiator: "Maxim Sokhatsky",
+            addressedTo: "Board of Directors",
+            stage: "Sent",
+            documentNumber: "LTR-2026-008",
+            date: Date().addingTimeInterval(-345600),
+            correspondent: "Board Members",
+            shortSummary: "Quarterly strategic update letter.",
+            outgoingNumber: "OUT-200-Q"
+        ),
+        Document(
+            id: UUID(),
+            type: "Procurement",
+            initiator: "Operations",
+            addressedTo: "Finance Dept",
+            stage: "For Approval",
+            documentNumber: "PRC-2026-031",
+            date: Date().addingTimeInterval(-28800),
+            correspondent: "TechSupply Inc",
+            shortSummary: "Laptop procurement request for new hires.",
+            outgoingNumber: "OUT-031-P"
+        ),
+        Document(
+            id: UUID(),
+            type: "Resolution",
+            initiator: "Board Secretary",
+            addressedTo: "Maxim Sokhatsky",
+            stage: "For Signing",
+            documentNumber: "RES-2026-002",
+            date: Date().addingTimeInterval(-172800),
+            correspondent: "Board",
+            shortSummary: "Board resolution on budget allocation.",
+            outgoingNumber: "N/A"
+        ),
     ]
 }
 
@@ -139,7 +292,7 @@ struct FormField: Identifiable, Hashable {
     let title: String
     let type: FormFieldType
     let isRequired: Bool
-    
+
     init(id: UUID = UUID(), title: String, type: FormFieldType, isRequired: Bool = false) {
         self.id = id
         self.title = title
@@ -161,7 +314,7 @@ struct TemplateCategory: Identifiable, Hashable {
     let categoryName: String
     let iconName: String
     let templates: [DocumentTemplate]
-    
+
     static let mockCategories: [TemplateCategory] = [
         TemplateCategory(
             categoryName: "Наказ №370",
@@ -174,7 +327,10 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Company Name", type: .text, isRequired: true),
                         FormField(title: "Counterparty Name", type: .text, isRequired: true),
                         FormField(title: "Effective Date", type: .date, isRequired: true),
-                        FormField(title: "Jurisdiction", type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]), isRequired: true)
+                        FormField(
+                            title: "Jurisdiction",
+                            type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]),
+                            isRequired: true),
                     ],
                     description: "Standard Non-Disclosure Agreement for ZEN CRYPTED."
                 ),
@@ -183,10 +339,15 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "person.text.rectangle.fill",
                     requiredFields: [
                         FormField(title: "Employee Name", type: .text, isRequired: true),
-                        FormField(title: "Role", type: .searchDropdown(options: ["Software Engineer", "Product Manager", "Designer", "Security Analyst"]), isRequired: true),
+                        FormField(
+                            title: "Role",
+                            type: .searchDropdown(options: [
+                                "Software Engineer", "Product Manager", "Designer",
+                                "Security Analyst",
+                            ]), isRequired: true),
                         FormField(title: "Start Date", type: .date, isRequired: true),
                         FormField(title: "Salary (USD)", type: .currency, isRequired: true),
-                        FormField(title: "Equity Grant", type: .toggle, isRequired: false)
+                        FormField(title: "Equity Grant", type: .toggle, isRequired: false),
                     ],
                     description: "Standard employment agreement signed by Maxim Sokhatsky."
                 ),
@@ -195,12 +356,16 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "briefcase.fill",
                     requiredFields: [
                         FormField(title: "Vendor Name", type: .text, isRequired: true),
-                        FormField(title: "Service Type", type: .dropdown(options: ["Cloud Hosting", "IT Support", "Consulting", "Marketing"]), isRequired: true),
+                        FormField(
+                            title: "Service Type",
+                            type: .dropdown(options: [
+                                "Cloud Hosting", "IT Support", "Consulting", "Marketing",
+                            ]), isRequired: true),
                         FormField(title: "Monthly Value", type: .currency, isRequired: true),
-                        FormField(title: "Review Date", type: .datetime, isRequired: false)
+                        FormField(title: "Review Date", type: .datetime, isRequired: false),
                     ],
                     description: "Service Level Agreement for external contractors."
-                )
+                ),
             ]
         ),
         TemplateCategory(
@@ -213,7 +378,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     requiredFields: [
                         FormField(title: "Subject", type: .text, isRequired: true),
                         FormField(title: "Date", type: .date, isRequired: true),
-                        FormField(title: "Target Department", type: .dropdown(options: ["All Company", "Engineering", "Sales", "Executive"]), isRequired: true)
+                        FormField(
+                            title: "Target Department",
+                            type: .dropdown(options: [
+                                "All Company", "Engineering", "Sales", "Executive",
+                            ]), isRequired: true),
                     ],
                     description: "Official internal announcement from Maxim Sokhatsky."
                 ),
@@ -221,14 +390,21 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Внутрішній документ",
                     iconName: "exclamationmark.shield.fill",
                     requiredFields: [
-                        FormField(title: "Incident Type", type: .searchDropdown(options: ["Data Breach", "DDoS Attack", "Malware", "Phishing"]), isRequired: true),
+                        FormField(
+                            title: "Incident Type",
+                            type: .searchDropdown(options: [
+                                "Data Breach", "DDoS Attack", "Malware", "Phishing",
+                            ]), isRequired: true),
                         FormField(title: "Time Detected", type: .datetime, isRequired: true),
-                        FormField(title: "Severity", type: .dropdown(options: ["Low", "Medium", "High", "Critical"]), isRequired: true),
-                        FormField(title: "Resolved", type: .toggle, isRequired: false)
+                        FormField(
+                            title: "Severity",
+                            type: .dropdown(options: ["Low", "Medium", "High", "Critical"]),
+                            isRequired: true),
+                        FormField(title: "Resolved", type: .toggle, isRequired: false),
                     ],
                     description: "Internal report for tracking security breaches."
-                )
+                ),
             ]
-        )
+        ),
     ]
 }
