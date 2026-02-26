@@ -12,37 +12,37 @@
 			containerPortal = 61B351D72F106EEB00E6AD21 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 61B351DE2F106EEB00E6AD21;
-			remoteInfo = message;
+			remoteInfo = Mail;
 		};
 		61B351FC2F106EEC00E6AD21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 61B351D72F106EEB00E6AD21 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 61B351DE2F106EEB00E6AD21;
-			remoteInfo = message;
+			remoteInfo = Mail;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		61B351DF2F106EEB00E6AD21 /* message.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = message.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		61B351F12F106EEC00E6AD21 /* messageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = messageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		61B351FB2F106EEC00E6AD21 /* messageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = messageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351DF2F106EEB00E6AD21 /* Message.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Message.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351F12F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Message.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61B351FB2F106EEC00E6AD21 /* Message.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Message.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		61B351E12F106EEB00E6AD21 /* message */ = {
+		61B351E12F106EEB00E6AD21 /* Mail */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = message;
+			path = Mail;
 			sourceTree = "<group>";
 		};
-		61B351F42F106EEC00E6AD21 /* messageTests */ = {
+		61B351F42F106EEC00E6AD21 /* MailTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = messageTests;
+			path = MailTests;
 			sourceTree = "<group>";
 		};
-		61B351FE2F106EEC00E6AD21 /* messageUITests */ = {
+		61B351FE2F106EEC00E6AD21 /* MailUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = messageUITests;
+			path = MailUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		61B351D62F106EEB00E6AD21 = {
 			isa = PBXGroup;
 			children = (
-				61B351E12F106EEB00E6AD21 /* message */,
-				61B351F42F106EEC00E6AD21 /* messageTests */,
-				61B351FE2F106EEC00E6AD21 /* messageUITests */,
+				61B351E12F106EEB00E6AD21 /* Mail */,
+				61B351F42F106EEC00E6AD21 /* MailTests */,
+				61B351FE2F106EEC00E6AD21 /* MailUITests */,
 				61B351E02F106EEB00E6AD21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		61B351E02F106EEB00E6AD21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				61B351DF2F106EEB00E6AD21 /* message.app */,
-				61B351F12F106EEC00E6AD21 /* messageTests.xctest */,
-				61B351FB2F106EEC00E6AD21 /* messageUITests.xctest */,
+				61B351DF2F106EEB00E6AD21 /* Message.app */,
+				61B351F12F106EEC00E6AD21 /* Message.xctest */,
+				61B351FB2F106EEC00E6AD21 /* Message.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		61B351DE2F106EEB00E6AD21 /* message */ = {
+		61B351DE2F106EEB00E6AD21 /* Mail */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61B352052F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "message" */;
+			buildConfigurationList = 61B352052F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "Mail" */;
 			buildPhases = (
 				61B351DB2F106EEB00E6AD21 /* Sources */,
 				61B351DC2F106EEB00E6AD21 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				61B351E12F106EEB00E6AD21 /* message */,
+				61B351E12F106EEB00E6AD21 /* Mail */,
 			);
-			name = message;
+			name = Mail;
 			packageProductDependencies = (
 			);
-			productName = message;
-			productReference = 61B351DF2F106EEB00E6AD21 /* message.app */;
+			productName = mail;
+			productReference = 61B351DF2F106EEB00E6AD21 /* Mail.app */;
 			productType = "com.apple.product-type.application";
 		};
-		61B351F02F106EEC00E6AD21 /* messageTests */ = {
+		61B351F02F106EEC00E6AD21 /* MailTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61B352082F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "messageTests" */;
+			buildConfigurationList = 61B352082F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "MailTests" */;
 			buildPhases = (
 				61B351ED2F106EEC00E6AD21 /* Sources */,
 				61B351EE2F106EEC00E6AD21 /* Frameworks */,
@@ -131,18 +131,18 @@
 				61B351F32F106EEC00E6AD21 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				61B351F42F106EEC00E6AD21 /* messageTests */,
+				61B351F42F106EEC00E6AD21 /* MailTests */,
 			);
-			name = messageTests;
+			name = MailTests;
 			packageProductDependencies = (
 			);
-			productName = messageTests;
-			productReference = 61B351F12F106EEC00E6AD21 /* messageTests.xctest */;
+			productName = MailTests;
+			productReference = 61B351F12F106EEC00E6AD21 /* Message.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		61B351FA2F106EEC00E6AD21 /* messageUITests */ = {
+		61B351FA2F106EEC00E6AD21 /* MailUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 61B3520B2F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "messageUITests" */;
+			buildConfigurationList = 61B3520B2F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "MailUITests" */;
 			buildPhases = (
 				61B351F72F106EEC00E6AD21 /* Sources */,
 				61B351F82F106EEC00E6AD21 /* Frameworks */,
@@ -154,13 +154,13 @@
 				61B351FD2F106EEC00E6AD21 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				61B351FE2F106EEC00E6AD21 /* messageUITests */,
+				61B351FE2F106EEC00E6AD21 /* MailUITests */,
 			);
-			name = messageUITests;
+			name = MailUITests;
 			packageProductDependencies = (
 			);
-			productName = messageUITests;
-			productReference = 61B351FB2F106EEC00E6AD21 /* messageUITests.xctest */;
+			productName = MailUITests;
+			productReference = 61B351FB2F106EEC00E6AD21 /* Message.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,12 +186,14 @@
 					};
 				};
 			};
-			buildConfigurationList = 61B351DA2F106EEB00E6AD21 /* Build configuration list for PBXProject "message" */;
+			buildConfigurationList = 61B351DA2F106EEB00E6AD21 /* Build configuration list for PBXProject "Mail" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				uk,
+				ar,
 			);
 			mainGroup = 61B351D62F106EEB00E6AD21;
 			minimizedProjectReferenceProxies = 1;
@@ -203,9 +205,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				61B351DE2F106EEB00E6AD21 /* message */,
-				61B351F02F106EEC00E6AD21 /* messageTests */,
-				61B351FA2F106EEC00E6AD21 /* messageUITests */,
+				61B351DE2F106EEB00E6AD21 /* Mail */,
+				61B351F02F106EEC00E6AD21 /* MailTests */,
+				61B351FA2F106EEC00E6AD21 /* MailUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,12 +263,12 @@
 /* Begin PBXTargetDependency section */
 		61B351F32F106EEC00E6AD21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 61B351DE2F106EEB00E6AD21 /* message */;
+			target = 61B351DE2F106EEB00E6AD21 /* Mail */;
 			targetProxy = 61B351F22F106EEC00E6AD21 /* PBXContainerItemProxy */;
 		};
 		61B351FD2F106EEC00E6AD21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 61B351DE2F106EEB00E6AD21 /* message */;
+			target = 61B351DE2F106EEB00E6AD21 /* Mail */;
 			targetProxy = 61B351FC2F106EEC00E6AD21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -310,6 +312,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXECUTABLE_NAME = x420;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -324,15 +327,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Message;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail X.420";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_NAME = "Mail X.420";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -376,6 +378,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXECUTABLE_NAME = x420;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -384,14 +387,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Message;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail X.420";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_NAME = "Mail X.420";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -407,7 +409,10 @@
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				EXECUTABLE_NAME = x420;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail X.420";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -425,9 +430,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.message;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mail;
+				PRODUCT_NAME = "Mail X.420";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -453,7 +457,10 @@
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				EXECUTABLE_NAME = x420;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail X.420";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -471,9 +478,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.message;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mail;
+				PRODUCT_NAME = "Mail X.420";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -494,13 +500,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXECUTABLE_NAME = x420;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.messageTests;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mailTests;
+				PRODUCT_NAME = "Mail X.420";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -509,7 +515,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/message.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/message";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -520,13 +526,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXECUTABLE_NAME = x420;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.messageTests;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mailTests;
+				PRODUCT_NAME = "Mail X.420";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -535,7 +541,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/message.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/message";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
@@ -549,7 +555,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.messageUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mailUITests;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -558,7 +564,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = message;
+				TEST_TARGET_NAME = x420;
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -568,13 +574,13 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXECUTABLE_NAME = x420;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = x509.messageUITests;
-				PRODUCT_NAME = "Message";
-				EXECUTABLE_NAME = message;
+				PRODUCT_BUNDLE_IDENTIFIER = x420.mailUITests;
+				PRODUCT_NAME = "Mail X.420";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -583,7 +589,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = message;
+				TEST_TARGET_NAME = x420;
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
@@ -591,7 +597,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		61B351DA2F106EEB00E6AD21 /* Build configuration list for PBXProject "message" */ = {
+		61B351DA2F106EEB00E6AD21 /* Build configuration list for PBXProject "Mail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61B352032F106EEC00E6AD21 /* Debug */,
@@ -600,7 +606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61B352052F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "message" */ = {
+		61B352052F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "Mail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61B352062F106EEC00E6AD21 /* Debug */,
@@ -609,7 +615,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61B352082F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "messageTests" */ = {
+		61B352082F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "MailTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61B352092F106EEC00E6AD21 /* Debug */,
@@ -618,7 +624,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		61B3520B2F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "messageUITests" */ = {
+		61B3520B2F106EEC00E6AD21 /* Build configuration list for PBXNativeTarget "MailUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61B3520C2F106EEC00E6AD21 /* Debug */,

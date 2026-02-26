@@ -62,7 +62,7 @@ struct CRMMainView: View {
                 }
             }
         }
-        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
+        .navigationSplitViewColumnWidth(min: 100, ideal: 250, max: 300)
         .background(CRMTheme.primaryBackground)
         .scrollContentBackground(.hidden)
     }
@@ -126,12 +126,12 @@ struct CRMMainView: View {
                     Label("Columns", systemImage: "tablecells")
                 }
                 
-                Button(action: {
+               // Button(action: {
                     // Open Wizard in the Forms Tab
-                    state.selectedTab = 1
-                }) {
-                    Label("New Document", systemImage: "doc.badge.plus")
-                }
+                 //   state.selectedTab = 1
+               // }) {
+                  //  Label("New Document", systemImage: "doc.badge.plus")
+              //  }
             }
             .padding()
             .background(CRMTheme.secondaryBackground.opacity(0.3))
@@ -207,7 +207,7 @@ struct CRMMainView: View {
             .tableStyle(.bordered)
             #endif
         }
-        .navigationSplitViewColumnWidth(min: 500, ideal: 800)
+        .navigationSplitViewColumnWidth(min: 100, ideal: 800)
     }
     
     @ViewBuilder

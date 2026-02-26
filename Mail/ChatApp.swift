@@ -35,10 +35,10 @@ struct ChatApp: App {
         .commands {
             // macOS Window Management & Shortcuts
             CommandGroup(replacing: .newItem) {
-                Button("New Document") {
+                //Button("New Document") {
                     // Trigger new document logic
-                }
-                .keyboardShortcut("n", modifiers: .command)
+               // }
+               // .keyboardShortcut("n", modifiers: .command)
                 
                 Button("Open File...") {
                     // Trigger file open
