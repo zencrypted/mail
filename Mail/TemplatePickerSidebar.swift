@@ -69,7 +69,7 @@ struct TemplatePickerSidebar: View {
                                 HStack(spacing: 12) {
                                     Image(systemName: template.iconName)
                                         .foregroundColor(CRMTheme.accent)
-                                        .frame(width: 24, alignment: .center)
+                                        .frame(width: 24, alignment: .top)
                                         .font(.title2)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
@@ -79,8 +79,9 @@ struct TemplatePickerSidebar: View {
                                         Text(template.description)
                                             .font(.caption)
                                             .foregroundColor(CRMTheme.secondaryText)
-                                            .lineLimit(2)
+                                            .lineLimit(12)
                                     }
+                                    .frame(width: 290, alignment: .topLeading)
                                     Spacer()
                                     if selectedTemplate?.id == template.id {
                                         Image(systemName: "checkmark")

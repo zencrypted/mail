@@ -65,7 +65,7 @@ struct NewDocumentWizardView: View {
                 #if os(macOS)
                     HSplitView {
                         leftPane
-                            .frame(minWidth: 250, idealWidth: 300, maxWidth: 400)
+                            .frame(minWidth: 400, idealWidth: 400, maxWidth: 420)
                         middlePane
                             .frame(minWidth: 300, idealWidth: 350, maxWidth: 500)
                         rightPane
@@ -74,7 +74,7 @@ struct NewDocumentWizardView: View {
                 #else
                     HStack(spacing: 0) {
                         leftPane
-                            .frame(width: 300)
+                            .frame(width: 450)
                         Divider()
                         middlePane
                             .frame(width: 350)
@@ -96,6 +96,7 @@ struct NewDocumentWizardView: View {
         TemplatePickerSidebar(
             selectedTemplate: $selectedTemplate, categories: TemplateCategory.mockCategories
         )
+        //.frame(width: 360)
         .background(CRMTheme.primaryBackground)
     }
 
