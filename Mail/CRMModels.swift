@@ -325,11 +325,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Наказ командира",
                     iconName: "scroll",
                     requiredFields: [
-                        FormField(title: "Назва наказу", type: .text, isRequired: true),
                         FormField(title: "Номер наказу", type: .text, isRequired: true),
-                        FormField(title: "Дата підписання", type: .date, isRequired: true),
+                        FormField(title: "Дата видання", type: .date, isRequired: true),
+                        FormField(title: "Вид наказу", type: .dropdown(options: ["По особовому складу", "По стройовій частині"]), isRequired: true),
                         FormField(title: "Підстава", type: .text, isRequired: true),
-                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                        FormField(title: "Виконавець (посада, ПІБ, телефон)", type: .text, isRequired: true)
                     ],
                     description: "Основний розпорядчий документ командира (керівника) військової частини (установи), виданий на правах єдиноначальності."
                 ),
@@ -337,10 +337,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Директива",
                     iconName: "lock.doc.fill",
                     requiredFields: [
-                        FormField(title: "Company Name", type: .text, isRequired: true),
-                        FormField(title: "Counterparty Name", type: .text, isRequired: true),
-                        FormField(title: "Effective Date", type: .date, isRequired: true),
-                        FormField(title: "Jurisdiction", type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]), isRequired: true)
+                        FormField(title: "Номер директиви", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Адресат (орган/підрозділ)", type: .text, isRequired: true),
+                        FormField(title: "Заголовок", type: .text, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Вид розпорядчого документа, який видається органом військового управління з метою забезпечення виконання прийнятого його керівником рішення щодо підготовки та ведення бойових дій, питань бойової і мобілізаційної готовності, всебічного забезпечення військ (сил), організації бойової, оперативної, мобілізаційної підготовки, навчання, виховання, штатної організації та інших питань життєдіяльності Збройних Сил України."
                 ),
@@ -348,11 +349,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Бойове розпорядження",
                     iconName: "person.text.rectangle.fill",
                     requiredFields: [
-                        FormField(title: "Employee Name", type: .text, isRequired: true),
-                        FormField(title: "Role", type: .searchDropdown(options: ["Software Engineer", "Product Manager", "Designer", "Security Analyst"]), isRequired: true),
-                        FormField(title: "Start Date", type: .date, isRequired: true),
-                        FormField(title: "Salary (USD)", type: .currency, isRequired: true),
-                        FormField(title: "Equity Grant", type: .toggle, isRequired: false)
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Завдання", type: .text, isRequired: true),
+                        FormField(title: "Виконавець (підрозділ)", type: .text, isRequired: true),
+                        FormField(title: "Термін виконання", type: .date, isRequired: true)
                     ],
                     description: "Розпорядчий документ, яким доводяться бойові завдання підпорядкованим військовим частинам (установам) і підрозділам. Бойове розпорядження доводиться після вироблення замислу (плану) та визначення завдань військовим частинам і підрозділам."
                 ),
@@ -363,7 +364,8 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Номер", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Завдання", type: .text, isRequired: true),
-                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                        FormField(title: "Виконавець", type: .text, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Акт військового управління за встановленою формою, яким відповідно до плану операції (бойових дій) доводяться бойові завдання підпорядкованим військам (силам). Як правило, використовується для постановки бойових завдань в оперативно-тактичній та тактичній ланці."
                 ),
@@ -374,7 +376,8 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Адресат", type: .text, isRequired: true),
                         FormField(title: "Тема", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true),
-                        FormField(title: "Зміст", type: .text, isRequired: true)
+                        FormField(title: "Зміст", type: .text, isRequired: true),
+                        FormField(title: "Пропозиції", type: .text, isRequired: false)
                     ],
                     description: "Службовий документ, адресований командиру (керівнику) військової частини (установи), з інформацією про ситуацію, що склалася, наявні факти, певні події, явища, виконану роботу з висновками та пропозиціями автора, виконання окремих завдань, службових доручень тощо."
                 ),
@@ -393,9 +396,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Звіт",
                     iconName: "chart.bar.fill",
                     requiredFields: [
-                        FormField(title: "Тип звіту", type: .dropdown(options: ["Фінансовий", "Операційний", "Аналітичний"]), isRequired: true),
+                        FormField(title: "Тип звіту", type: .dropdown(options: ["Фінансовий", "Операційний", "Аналітичний", "Бойовий"]), isRequired: true),
                         FormField(title: "Період", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true)
                     ],
                     description: "Документ, що містить відомості про виконання плану, завдання, підготовку заходів, доручень і проведення заходів та подається вищій посадовій особі чи до військової частини (установи)."
                 ),
@@ -403,9 +407,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Акт",
                     iconName: "doc.on.doc.fill",
                     requiredFields: [
-                        FormField(title: "Тип акту", type: .dropdown(options: ["Приймання-передачі", "Інвентаризації", "Обстеження"]), isRequired: true),
+                        FormField(title: "Тип акту", type: .dropdown(options: ["Приймання-передачі", "Інвентаризації", "Обстеження", "Службовий"]), isRequired: true),
                         FormField(title: "Дата складання", type: .date, isRequired: true),
-                        FormField(title: "Комісія", type: .text, isRequired: true)
+                        FormField(title: "Комісія (склад)", type: .text, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Офіційний документ, складений кількома особами, що підтверджує встановлені факти чи події та підлягає затвердженню посадовою особою в межах повноважень."
                 ),
@@ -415,7 +420,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     requiredFields: [
                         FormField(title: "Тип довідки", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true),
-                        FormField(title: "Адресат", type: .text, isRequired: true)
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
                     ],
                     description: "Документ інформаційного характеру, що підтверджує факти з життя чи діяльності військовослужбовців (працівників) і різні обставини діяльності військових частин (установ)."
                 ),
@@ -423,9 +429,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Доручення",
                     iconName: "arrowshape.turn.up.right.fill",
                     requiredFields: [
-                        FormField(title: "Тема", type: .text, isRequired: true),
-                        FormField(title: "Виконавець", type: .text, isRequired: true),
-                        FormField(title: "Термін", type: .date, isRequired: true),
+                        FormField(title: "Номер доручення", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Тема (короткий зміст)", type: .text, isRequired: true),
+                        FormField(title: "Виконавець (посада, ПІБ)", type: .text, isRequired: true),
+                        FormField(title: "Термін виконання", type: .date, isRequired: true),
                         FormField(title: "Контроль", type: .toggle, isRequired: false)
                     ],
                     description: "Доручення керівника."
@@ -434,19 +442,24 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Розпорядження",
                     iconName: "list.bullet",
                     requiredFields: [
-                        FormField(title: "Назва", type: .text, isRequired: true),
+                        FormField(title: "Номер розпорядження", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true),
-                        FormField(title: "Виконавець", type: .text, isRequired: true)
-                    ],
+                        FormField(title: "Заголовок", type: .text, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true),
+                        FormField(title: "Термін виконання", type: .date, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: false)
+                   ],
                     description: "Розпорядчий документ, виданий начальником штабу військової частини, першим заступником керівника установи, а в разі його відсутності – одним із заступників керівника, з метою вирішення окремих оперативних питань, спрямованих на всебічне забезпечення життєдіяльності та функціонування військової частини (установи), доведення вказівок підпорядкованим штабам, військовим частинам і підрозділам щодо майбутніх дій військ (сил), управління військами, взаємодії, введення в оману, по видах забезпечення і має обмежений строк дії."
                 ),
                 DocumentTemplate(
                     templateName: "Протокол",
                     iconName: "doc.on.doc",
                     requiredFields: [
+                        FormField(title: "Номер протоколу", type: .text, isRequired: true),
+                        FormField(title: "Дата засідання", type: .date, isRequired: true),
                         FormField(title: "Тип засідання", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true),
-                        FormField(title: "Голова", type: .text, isRequired: true)
+                        FormField(title: "Голова", type: .text, isRequired: true),
+                        FormField(title: "Порядок денний", type: .text, isRequired: true)
                     ],
                     description: "Документ, в якому записується хід обговорення питань і прийняття рішень колегіальних органів на зборах, нарадах, конференціях, засіданнях тощо."
                 ),
@@ -454,9 +467,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "План",
                     iconName: "calendar",
                     requiredFields: [
+                        FormField(title: "Номер плану", type: .text, isRequired: true),
                         FormField(title: "Назва плану", type: .text, isRequired: true),
                         FormField(title: "Період", type: .text, isRequired: true),
-                        FormField(title: "Дата затвердження", type: .date, isRequired: true)
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true),
+                        FormField(title: "Відповідальний", type: .text, isRequired: true)
                     ],
                     description: "Перелік запланованих до виконання робіт або заходів, їх послідовність із визначенням строків виконання і виконавців."
                 ),
@@ -464,8 +479,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Положення",
                     iconName: "book.pages",
                     requiredFields: [
-                        FormField(title: "Назва", type: .text, isRequired: true),
-                        FormField(title: "Дата затвердження", type: .date, isRequired: true)
+                        FormField(title: "Назва положення", type: .text, isRequired: true),
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Нормативно-правовий акт, в якому визначаються структура, функції, обов’язки та права військової частини (установи)."
                 ),
@@ -474,7 +490,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "book",
                     requiredFields: [
                         FormField(title: "Назва інструкції", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Організаційний документ, в якому визначаються правила, які регулюють організаційні, науково-технічні, господарські, фінансові та інші спеціальні сторони діяльності військових частин (установ) та посадових осіб."
                 ),
@@ -482,8 +499,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Історичний формуляр",
                     iconName: "bubble.left.and.bubble.right",
                     requiredFields: [
-                        FormField(title: "Тема", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Номер формуляра", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Тема (період)", type: .text, isRequired: true)
                     ],
                     description: "Документ, в якому відображається організаційний розвиток і бойова діяльність військової частини, важливі події, стан бойової підготовки, військової дисципліни та інші відомості."
                 ),
@@ -491,8 +509,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Формуляр військової частини",
                     iconName: "bubble.left.and.bubble.right",
                     requiredFields: [
-                        FormField(title: "Тема", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Номер формуляра", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Найменування частини", type: .text, isRequired: true)
                     ],
                     description: "Документ, що містить інформацію про військову частину (установу), яка необхідна для організації її повсякденної діяльності, підтримання бойової та мобілізаційної готовності, підготовки до виконання завдань за призначенням відповідно до ситуації застосування Збройних Сил України."
                 ),
@@ -500,8 +519,11 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Окреме доручення",
                     iconName: "bubble.left.and.bubble.right",
                     requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Тема", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Виконавець", type: .text, isRequired: true),
+                        FormField(title: "Термін", type: .date, isRequired: true)
                     ],
                     description: "форма реалізації управлінських повноважень командира (керівника), що передбачає визначення конкретного завдання, мети, строку та відповідальної за виконання посадової особи. Доручення надається до конкретно визначеного документа."
                 ),
@@ -509,8 +531,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Постанова",
                     iconName: "bubble.left.and.bubble.right",
                     requiredFields: [
+                        FormField(title: "Номер постанови", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Тема", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Голова", type: .text, isRequired: true)
                     ],
                     description: "Правовий нормативний акт, який приймається вищими і деякими центральними органами колегіального управління."
                 ),
@@ -530,7 +554,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
                     ],
                     description: "Документ із вказівкою або порадою діяти певним чином."
                 ),
@@ -539,7 +565,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "ПІБ відрядженого", type: .text, isRequired: true),
+                        FormField(title: "Мета відрядження", type: .text, isRequired: true),
+                        FormField(title: "Термін", type: .date, isRequired: true)
                     ],
                     description: "Документ встановленого зразка, що дається особі, яка відряджається для виконання службового доручення."
                 ),
@@ -548,7 +577,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "ПІБ", type: .text, isRequired: true),
+                        FormField(title: "Вид відпустки", type: .text, isRequired: true),
+                        FormField(title: "Період", type: .text, isRequired: true)
                     ],
                     description: "Документ встановленого зразка, що надає право військовослужбовцю під час відпустки вибувати за межі гарнізону."
                 ),
@@ -556,18 +588,17 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Графік відпусток",
                     iconName: "envelope",
                     requiredFields: [
-                        FormField(title: "Адресат", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .datetime, isRequired: true),
-                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
-                    ],
+                        FormField(title: "Період графіка", type: .text, isRequired: true),
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова", "Навчальна"]), isRequired: true)                    ],
                     description: "Документ, в якому зазначаються дати відпусток."
                 ),
                 DocumentTemplate(
                     templateName: "Обхідний лист",
                     iconName: "envelope",
                     requiredFields: [
-                        FormField(title: "Адресат", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "ПІБ", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Категорія", type: .dropdown(options: ["Звичайний", "Терміновий"]), isRequired: true)
                     ],
                     description: "Документ, в якому зазначено структурні підрозділи, керівники яких мають засвідчити відсутність заборгованості військовослужбовця (працівника) перед ними."
@@ -576,9 +607,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Телеграма",
                     iconName: "envelope",
                     requiredFields: [
-                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Номер", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .datetime, isRequired: true),
-                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова", "Урядова"]), isRequired: true)
                     ],
                     description: "Телеграма."
                 ),
@@ -586,8 +618,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Телефонограма",
                     iconName: "envelope",
                     requiredFields: [
-                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Номер", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Адресат", type: .text, isRequired: true),
                         FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
                     ],
                     description: "Невідкладне, термінове повідомлення, яке передається телефоном, фіксується у спеціальній книзі (журналі) і містить розпорядження або інформацію."
@@ -596,8 +629,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Факсограма",
                     iconName: "envelope",
                     requiredFields: [
-                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Номер", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Адресат", type: .text, isRequired: true),
                         FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
                     ],
                     description: "Паперова копія документа, що передається засобами факсимільного зв’язку (телефаксом)."
@@ -606,8 +640,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Службовий акт",
                     iconName: "doc.text.magnifyingglass",
                     requiredFields: [
-                        FormField(title: "Тип", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Тип акту", type: .text, isRequired: true),
+                        FormField(title: "Дата складання", type: .date, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true)
                     ],
                     description: "Службовий акт."
                 ),
@@ -615,8 +650,10 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Службовий лист",
                     iconName: "doc.text.magnifyingglass",
                     requiredFields: [
-                        FormField(title: "Тип", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Заголовок", type: .text, isRequired: true)
                     ],
                     description: "Документ, який є одним із основних засобів спілкування, обміну інформацією та оперативного управління найрізноманітнішими процесами діяльності військ (сил)."
                 ),
@@ -625,7 +662,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "list.star",
                     requiredFields: [
                         FormField(title: "Назва програми", type: .text, isRequired: true),
-                        FormField(title: "Період", type: .text, isRequired: true)
+                        FormField(title: "Період", type: .text, isRequired: true),
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true)
                     ],
                     description: "Документ, в якому передбачається продуманий план певної роботи."
                 ),
@@ -634,7 +672,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
                     ],
                     description: "Припис."
                 ),
@@ -643,7 +682,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Назва", type: .text, isRequired: true)
                     ],
                     description: "Документ, в якому описано систему правил виконання певного класу завдань."
                 ),
@@ -652,7 +692,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Назва", type: .text, isRequired: true)
                     ],
                     description: "Нормативний документ, який конкретизує нормативні приписи загального характеру з метою регулювання поведінки службових осіб у певних галузях і вирішує процедурні питання."
                 ),
@@ -661,7 +702,9 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Голова", type: .text, isRequired: true)
                     ],
                     description: "Вид документа розпорядчого характеру, що ухвалюється в колегіальному порядку для вирішення найбільш важливих питань. Текст рішення складається з двох частин: констатуючої та регулятивної. У регулятивній частині визначаються конкретні завдання, виконавці та строки виконання."
                 ),
@@ -670,7 +713,8 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "arrow.right.doc",
                     requiredFields: [
                         FormField(title: "Номер", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Назва", type: .text, isRequired: true)
                     ],
                     description: "Документ із визначенням послідовних, систематичних порад, вказівок, пропозицій, виконання яких виключає негативний вплив на виконання певних дій."
                 ),
@@ -678,13 +722,14 @@ struct TemplateCategory: Identifiable, Hashable {
                     templateName: "Рапорт",
                     iconName: "chart.bar.fill",
                     requiredFields: [
-                        FormField(title: "Тип звіту", type: .dropdown(options: ["Фінансовий", "Операційний", "Аналітичний"]), isRequired: true),
-                        FormField(title: "Період", type: .text, isRequired: true),
-                        FormField(title: "Дата", type: .date, isRequired: true)
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true),
+                        FormField(title: "Тип рапорту", type: .dropdown(options: ["Про відпустку", "Про звільнення", "Про преміювання", "Про стан справ"]), isRequired: true)
                     ],
                     description: "Письмове звернення військовослужбовця (працівника) до вищої посадової особи з проханням (надання відпустки, матеріальної допомоги, поліпшення житлових умов, переведення, звільнення тощо) чи пояснення особистого характеру."
                 ),
-                // (можна додати Історичний формуляр / Формуляр військової частини / Правила / Алгоритм за потреби)
             ]
         ),
 
