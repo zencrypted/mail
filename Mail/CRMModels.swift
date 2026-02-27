@@ -457,9 +457,15 @@ struct TemplateCategory: Identifiable, Hashable {
                     requiredFields: [
                         FormField(title: "Номер протоколу", type: .text, isRequired: true),
                         FormField(title: "Дата засідання", type: .date, isRequired: true),
-                        FormField(title: "Тип засідання", type: .text, isRequired: true),
+                        FormField(title: "Тип засідання", type: .dropdown(
+                            options: ["Нарада", "Технічний комітет", "Експертний комітет",
+                                      "Методичний комітет", "Збори", "Конференція", "Засідання"]), isRequired: true),
+                        FormField(title: "Місце засідання", type: .text, isRequired: true),
                         FormField(title: "Голова", type: .text, isRequired: true),
-                        FormField(title: "Порядок денний", type: .text, isRequired: true)
+                        FormField(title: "Порядок денний", type: .text, isRequired: true),
+                        FormField(title: "Вступна частина", type: .text, isRequired: true),
+                        FormField(title: "Основна частина", type: .text, isRequired: true),
+                        FormField(title: "Наявність додатків", type: .toggle, isRequired: true)
                     ],
                     description: "Документ, в якому записується хід обговорення питань і прийняття рішень колегіальних органів на зборах, нарадах, конференціях, засіданнях тощо."
                 ),
