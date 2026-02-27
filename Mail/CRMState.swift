@@ -18,7 +18,7 @@ enum UserThemePreference: String, CaseIterable {
 
 enum LanguagePreference: String, CaseIterable, Identifiable {
     case english = "en"
-    case ukrainian = "uk"
+    case ukrainian = "ua"
     case arabic = "ar"
 
     var id: String { rawValue }

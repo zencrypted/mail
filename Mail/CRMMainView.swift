@@ -2,7 +2,7 @@ import PDFKit
 import SwiftUI
 
 func appLocalized(_ key: String) -> String {
-    let lang = UserDefaults.standard.string(forKey: "selected_lang") ?? "ua"
+    let lang = UserDefaults.standard.string(forKey: "selected_lang") ?? "uk"
     let bundlePath = Bundle.main.path(forResource: lang, ofType: "lproj") ?? Bundle.main.bundlePath
     if let bundle = Bundle(path: bundlePath) {
         return bundle.localizedString(forKey: key, value: nil, table: nil)
