@@ -194,6 +194,7 @@
 				Base,
 				uk,
 				ar,
+				ua,
 			);
 			mainGroup = 61B351D62F106EEB00E6AD21;
 			minimizedProjectReferenceProxies = 1;
