@@ -318,11 +318,11 @@ struct TemplateCategory: Identifiable, Hashable {
     static let mockCategories: [TemplateCategory] = [
         // MARK: - Інструкція з діловодства №370
         TemplateCategory(
-            categoryName: "Інструкція з діловодства №370",
+            categoryName: "Інструкція з діловодства №40",
             iconName: "doc.text.fill",
             templates: [
                 DocumentTemplate(
-                    templateName: "Наказ",
+                    templateName: "Наказ командира",
                     iconName: "scroll",
                     requiredFields: [
                         FormField(title: "Назва наказу", type: .text, isRequired: true),
@@ -331,7 +331,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Підстава", type: .text, isRequired: true),
                         FormField(title: "Виконавець", type: .text, isRequired: true)
                     ],
-                    description: "Наказ керівника організації."
+                    description: "Основний розпорядчий документ командира (керівника) військової частини (установи), виданий на правах єдиноначальності."
                 ),
                 DocumentTemplate(
                     templateName: "Директива",
@@ -342,7 +342,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Effective Date", type: .date, isRequired: true),
                         FormField(title: "Jurisdiction", type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]), isRequired: true)
                     ],
-                    description: "Standard Non-Disclosure Agreement for ZEN CRYPTED."
+                    description: "Вид розпорядчого документа, який видається органом військового управління з метою забезпечення виконання прийнятого його керівником рішення щодо підготовки та ведення бойових дій, питань бойової і мобілізаційної готовності, всебічного забезпечення військ (сил), організації бойової, оперативної, мобілізаційної підготовки, навчання, виховання, штатної організації та інших питань життєдіяльності Збройних Сил України."
                 ),
                 DocumentTemplate(
                     templateName: "Бойове розпорядження",
@@ -354,7 +354,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Salary (USD)", type: .currency, isRequired: true),
                         FormField(title: "Equity Grant", type: .toggle, isRequired: false)
                     ],
-                    description: "Standard employment agreement signed by Maxim Sokhatsky."
+                    description: "Розпорядчий документ, яким доводяться бойові завдання підпорядкованим військовим частинам (установам) і підрозділам. Бойове розпорядження доводиться після вироблення замислу (плану) та визначення завдань військовим частинам і підрозділам."
                 ),
                 DocumentTemplate(
                     templateName: "Бойовий наказ",
@@ -365,7 +365,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Завдання", type: .text, isRequired: true),
                         FormField(title: "Виконавець", type: .text, isRequired: true)
                     ],
-                    description: "Бойовий наказ для виконання спеціальних завдань."
+                    description: "Акт військового управління за встановленою формою, яким відповідно до плану операції (бойових дій) доводяться бойові завдання підпорядкованим військам (силам). Як правило, використовується для постановки бойових завдань в оперативно-тактичній та тактичній ланці."
                 ),
                 DocumentTemplate(
                     templateName: "Доповідна записка",
@@ -376,7 +376,18 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Зміст", type: .text, isRequired: true)
                     ],
-                    description: "Доповідна (службова) записка."
+                    description: "Службовий документ, адресований командиру (керівнику) військової частини (установи), з інформацією про ситуацію, що склалася, наявні факти, певні події, явища, виконану роботу з висновками та пропозиціями автора, виконання окремих завдань, службових доручень тощо."
+                ),
+                DocumentTemplate(
+                    templateName: "Доповідь",
+                    iconName: "briefcase.fill",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
+                    ],
+                    description: "Документ, що містить виклад певних питань з висновками та пропозиціями."
                 ),
                 DocumentTemplate(
                     templateName: "Звіт",
@@ -386,7 +397,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Період", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true)
                     ],
-                    description: "Звіт про виконану роботу."
+                    description: "Документ, що містить відомості про виконання плану, завдання, підготовку заходів, доручень і проведення заходів та подається вищій посадовій особі чи до військової частини (установи)."
                 ),
                 DocumentTemplate(
                     templateName: "Акт",
@@ -396,7 +407,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата складання", type: .date, isRequired: true),
                         FormField(title: "Комісія", type: .text, isRequired: true)
                     ],
-                    description: "Акт приймання або стану."
+                    description: "Офіційний документ, складений кількома особами, що підтверджує встановлені факти чи події та підлягає затвердженню посадовою особою в межах повноважень."
                 ),
                 DocumentTemplate(
                     templateName: "Довідка",
@@ -406,7 +417,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Адресат", type: .text, isRequired: true)
                     ],
-                    description: "Службова довідка."
+                    description: "Документ інформаційного характеру, що підтверджує факти з життя чи діяльності військовослужбовців (працівників) і різні обставини діяльності військових частин (установ)."
                 ),
                 DocumentTemplate(
                     templateName: "Доручення",
@@ -427,7 +438,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Виконавець", type: .text, isRequired: true)
                     ],
-                    description: "Розпорядження керівника."
+                    description: "Розпорядчий документ, виданий начальником штабу військової частини, першим заступником керівника установи, а в разі його відсутності – одним із заступників керівника, з метою вирішення окремих оперативних питань, спрямованих на всебічне забезпечення життєдіяльності та функціонування військової частини (установи), доведення вказівок підпорядкованим штабам, військовим частинам і підрозділам щодо майбутніх дій військ (сил), управління військами, взаємодії, введення в оману, по видах забезпечення і має обмежений строк дії."
                 ),
                 DocumentTemplate(
                     templateName: "Протокол",
@@ -437,7 +448,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата", type: .date, isRequired: true),
                         FormField(title: "Голова", type: .text, isRequired: true)
                     ],
-                    description: "Протокол засідання."
+                    description: "Документ, в якому записується хід обговорення питань і прийняття рішень колегіальних органів на зборах, нарадах, конференціях, засіданнях тощо."
                 ),
                 DocumentTemplate(
                     templateName: "План",
@@ -447,7 +458,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Період", type: .text, isRequired: true),
                         FormField(title: "Дата затвердження", type: .date, isRequired: true)
                     ],
-                    description: "Робочий або стратегічний план."
+                    description: "Перелік запланованих до виконання робіт або заходів, їх послідовність із визначенням строків виконання і виконавців."
                 ),
                 DocumentTemplate(
                     templateName: "Положення",
@@ -456,7 +467,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Назва", type: .text, isRequired: true),
                         FormField(title: "Дата затвердження", type: .date, isRequired: true)
                     ],
-                    description: "Положення про підрозділ."
+                    description: "Нормативно-правовий акт, в якому визначаються структура, функції, обов’язки та права військової частини (установи)."
                 ),
                 DocumentTemplate(
                     templateName: "Інструкція",
@@ -465,16 +476,101 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Назва інструкції", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true)
                     ],
-                    description: "Інструкція з певного виду діяльності."
+                    description: "Організаційний документ, в якому визначаються правила, які регулюють організаційні, науково-технічні, господарські, фінансові та інші спеціальні сторони діяльності військових частин (установ) та посадових осіб."
                 ),
                 DocumentTemplate(
-                    templateName: "Рапорт",
+                    templateName: "Історичний формуляр",
                     iconName: "bubble.left.and.bubble.right",
                     requiredFields: [
                         FormField(title: "Тема", type: .text, isRequired: true),
                         FormField(title: "Дата", type: .date, isRequired: true)
                     ],
-                    description: "Рапорт."
+                    description: "Документ, в якому відображається організаційний розвиток і бойова діяльність військової частини, важливі події, стан бойової підготовки, військової дисципліни та інші відомості."
+                ),
+                DocumentTemplate(
+                    templateName: "Формуляр військової частини",
+                    iconName: "bubble.left.and.bubble.right",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ, що містить інформацію про військову частину (установу), яка необхідна для організації її повсякденної діяльності, підтримання бойової та мобілізаційної готовності, підготовки до виконання завдань за призначенням відповідно до ситуації застосування Збройних Сил України."
+                ),
+                DocumentTemplate(
+                    templateName: "Окреме доручення",
+                    iconName: "bubble.left.and.bubble.right",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "форма реалізації управлінських повноважень командира (керівника), що передбачає визначення конкретного завдання, мети, строку та відповідальної за виконання посадової особи. Доручення надається до конкретно визначеного документа."
+                ),
+                DocumentTemplate(
+                    templateName: "Постанова",
+                    iconName: "bubble.left.and.bubble.right",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Правовий нормативний акт, який приймається вищими і деякими центральними органами колегіального управління."
+                ),
+                DocumentTemplate(
+                    templateName: "Пояснювальна записка",
+                    iconName: "briefcase.fill",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
+                    ],
+                    description: "Письмове пояснення дійсної ситуації, фактів, дій або вчинків військовослужбовця (працівника) на вимогу його командира (керівника), а в деяких випадках – з ініціативи підлеглого."
+                ),
+                DocumentTemplate(
+                    templateName: "Припис",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ із вказівкою або порадою діяти певним чином."
+                ),
+                DocumentTemplate(
+                    templateName: "Посвідчення про відрядження",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ встановленого зразка, що дається особі, яка відряджається для виконання службового доручення."
+                ),
+                DocumentTemplate(
+                    templateName: "Відпускний квиток",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ встановленого зразка, що надає право військовослужбовцю під час відпустки вибувати за межі гарнізону."
+                ),
+                DocumentTemplate(
+                    templateName: "Графік відпусток",
+                    iconName: "envelope",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
+                    ],
+                    description: "Документ, в якому зазначаються дати відпусток."
+                ),
+                DocumentTemplate(
+                    templateName: "Обхідний лист",
+                    iconName: "envelope",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайний", "Терміновий"]), isRequired: true)
+                    ],
+                    description: "Документ, в якому зазначено структурні підрозділи, керівники яких мають засвідчити відсутність заборгованості військовослужбовця (працівника) перед ними."
                 ),
                 DocumentTemplate(
                     templateName: "Телеграма",
@@ -487,6 +583,26 @@ struct TemplateCategory: Identifiable, Hashable {
                     description: "Телеграма."
                 ),
                 DocumentTemplate(
+                    templateName: "Телефонограма",
+                    iconName: "envelope",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
+                    ],
+                    description: "Невідкладне, термінове повідомлення, яке передається телефоном, фіксується у спеціальній книзі (журналі) і містить розпорядження або інформацію."
+                ),
+                DocumentTemplate(
+                    templateName: "Факсограма",
+                    iconName: "envelope",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
+                    ],
+                    description: "Паперова копія документа, що передається засобами факсимільного зв’язку (телефаксом)."
+                ),
+                DocumentTemplate(
                     templateName: "Службовий акт",
                     iconName: "doc.text.magnifyingglass",
                     requiredFields: [
@@ -496,13 +612,22 @@ struct TemplateCategory: Identifiable, Hashable {
                     description: "Службовий акт."
                 ),
                 DocumentTemplate(
+                    templateName: "Службовий лист",
+                    iconName: "doc.text.magnifyingglass",
+                    requiredFields: [
+                        FormField(title: "Тип", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ, який є одним із основних засобів спілкування, обміну інформацією та оперативного управління найрізноманітнішими процесами діяльності військ (сил)."
+                ),
+                DocumentTemplate(
                     templateName: "Програма",
                     iconName: "list.star",
                     requiredFields: [
                         FormField(title: "Назва програми", type: .text, isRequired: true),
                         FormField(title: "Період", type: .text, isRequired: true)
                     ],
-                    description: "Програма дій."
+                    description: "Документ, в якому передбачається продуманий план певної роботи."
                 ),
                 DocumentTemplate(
                     templateName: "Припис",
@@ -512,6 +637,52 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Дата", type: .date, isRequired: true)
                     ],
                     description: "Припис."
+                ),
+                DocumentTemplate(
+                    templateName: "Алгоритм",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ, в якому описано систему правил виконання певного класу завдань."
+                ),
+                DocumentTemplate(
+                    templateName: "Правила",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Нормативний документ, який конкретизує нормативні приписи загального характеру з метою регулювання поведінки службових осіб у певних галузях і вирішує процедурні питання."
+                ),
+                DocumentTemplate(
+                    templateName: "Рішення",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Вид документа розпорядчого характеру, що ухвалюється в колегіальному порядку для вирішення найбільш важливих питань. Текст рішення складається з двох частин: констатуючої та регулятивної. У регулятивній частині визначаються конкретні завдання, виконавці та строки виконання."
+                ),
+                DocumentTemplate(
+                    templateName: "Методичні рекомендації",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ із визначенням послідовних, систематичних порад, вказівок, пропозицій, виконання яких виключає негативний вплив на виконання певних дій."
+                ),
+                DocumentTemplate(
+                    templateName: "Рапорт",
+                    iconName: "chart.bar.fill",
+                    requiredFields: [
+                        FormField(title: "Тип звіту", type: .dropdown(options: ["Фінансовий", "Операційний", "Аналітичний"]), isRequired: true),
+                        FormField(title: "Період", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Письмове звернення військовослужбовця (працівника) до вищої посадової особи з проханням (надання відпустки, матеріальної допомоги, поліпшення житлових умов, переведення, звільнення тощо) чи пояснення особистого характеру."
                 ),
                 // (можна додати Історичний формуляр / Формуляр військової частини / Правила / Алгоритм за потреби)
             ]
