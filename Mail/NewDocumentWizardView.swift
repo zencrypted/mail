@@ -316,7 +316,7 @@ struct NewDocumentWizardView: View {
         if let template = selectedTemplate {
             VStack(alignment: .leading, spacing: 16) {
                 Form {
-                    Section("Metadata Fields") {
+                    Section(header: Text(appLocalized("Metadata Fields"))) {
                         ForEach(template.requiredFields) { field in
                             HStack {
                                 Text(field.title)

@@ -1,6 +1,15 @@
 import PDFKit
 import SwiftUI
 
+func appLocalized(_ key: String) -> String {
+    let lang = UserDefaults.standard.string(forKey: "selected_lang") ?? "ua"
+    let bundlePath = Bundle.main.path(forResource: lang, ofType: "lproj") ?? Bundle.main.bundlePath
+    if let bundle = Bundle(path: bundlePath) {
+        return bundle.localizedString(forKey: key, value: nil, table: nil)
+    }
+    return Bundle.main.localizedString(forKey: key, value: nil, table: nil)
+}
+
 struct CRMMainView: View {
     @EnvironmentObject var state: CRMState
     @Environment(\.openWindow) private var openWindow
@@ -23,7 +32,7 @@ struct CRMMainView: View {
     @ViewBuilder
     private var sidebar: some View {
         List(selection: $state.selectedInbox) {
-            Section(header: Text("Inboxes").foregroundColor(CRMTheme.secondaryText)) {
+            Section(header: Text(appLocalized("Inboxes")).foregroundColor(CRMTheme.secondaryText)) {
                 ForEach(InboxFolder.mockFolders) { folder in
                     NavigationLink(value: folder) {
                         HStack {

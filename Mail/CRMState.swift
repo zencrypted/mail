@@ -74,7 +74,7 @@ class CRMState: ObservableObject {
     // Theme
     // Theme & Language
     @Published var selectedTheme: UserThemePreference = .system
-    @Published var selectedLanguage: LanguagePreference = .english
+    @Published var selectedLanguage: LanguagePreference = .ukrainian
 
     // Wizard Form Navigation State
     @Published var selectedTab: Int = 0
