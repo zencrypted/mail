@@ -316,10 +316,23 @@ struct TemplateCategory: Identifiable, Hashable {
     let templates: [DocumentTemplate]
 
     static let mockCategories: [TemplateCategory] = [
+        // MARK: - Інструкція з діловодства №370
         TemplateCategory(
-            categoryName: "Наказ №370",
+            categoryName: "Інструкція з діловодства №370",
             iconName: "doc.text.fill",
             templates: [
+                DocumentTemplate(
+                    templateName: "Наказ",
+                    iconName: "scroll",
+                    requiredFields: [
+                        FormField(title: "Назва наказу", type: .text, isRequired: true),
+                        FormField(title: "Номер наказу", type: .text, isRequired: true),
+                        FormField(title: "Дата підписання", type: .date, isRequired: true),
+                        FormField(title: "Підстава", type: .text, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                    ],
+                    description: "Наказ керівника організації."
+                ),
                 DocumentTemplate(
                     templateName: "Директива",
                     iconName: "lock.doc.fill",
@@ -327,10 +340,7 @@ struct TemplateCategory: Identifiable, Hashable {
                         FormField(title: "Company Name", type: .text, isRequired: true),
                         FormField(title: "Counterparty Name", type: .text, isRequired: true),
                         FormField(title: "Effective Date", type: .date, isRequired: true),
-                        FormField(
-                            title: "Jurisdiction",
-                            type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]),
-                            isRequired: true),
+                        FormField(title: "Jurisdiction", type: .dropdown(options: ["Delaware", "New York", "London", "Cyprus"]), isRequired: true)
                     ],
                     description: "Standard Non-Disclosure Agreement for ZEN CRYPTED."
                 ),
@@ -339,72 +349,287 @@ struct TemplateCategory: Identifiable, Hashable {
                     iconName: "person.text.rectangle.fill",
                     requiredFields: [
                         FormField(title: "Employee Name", type: .text, isRequired: true),
-                        FormField(
-                            title: "Role",
-                            type: .searchDropdown(options: [
-                                "Software Engineer", "Product Manager", "Designer",
-                                "Security Analyst",
-                            ]), isRequired: true),
+                        FormField(title: "Role", type: .searchDropdown(options: ["Software Engineer", "Product Manager", "Designer", "Security Analyst"]), isRequired: true),
                         FormField(title: "Start Date", type: .date, isRequired: true),
                         FormField(title: "Salary (USD)", type: .currency, isRequired: true),
-                        FormField(title: "Equity Grant", type: .toggle, isRequired: false),
+                        FormField(title: "Equity Grant", type: .toggle, isRequired: false)
                     ],
                     description: "Standard employment agreement signed by Maxim Sokhatsky."
+                ),
+                DocumentTemplate(
+                    templateName: "Бойовий наказ",
+                    iconName: "flag.fill",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Завдання", type: .text, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                    ],
+                    description: "Бойовий наказ для виконання спеціальних завдань."
                 ),
                 DocumentTemplate(
                     templateName: "Доповідна записка",
                     iconName: "briefcase.fill",
                     requiredFields: [
-                        FormField(title: "Vendor Name", type: .text, isRequired: true),
-                        FormField(
-                            title: "Service Type",
-                            type: .dropdown(options: [
-                                "Cloud Hosting", "IT Support", "Consulting", "Marketing",
-                            ]), isRequired: true),
-                        FormField(title: "Monthly Value", type: .currency, isRequired: true),
-                        FormField(title: "Review Date", type: .datetime, isRequired: false),
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Зміст", type: .text, isRequired: true)
                     ],
-                    description: "Service Level Agreement for external contractors."
+                    description: "Доповідна (службова) записка."
                 ),
+                DocumentTemplate(
+                    templateName: "Звіт",
+                    iconName: "chart.bar.fill",
+                    requiredFields: [
+                        FormField(title: "Тип звіту", type: .dropdown(options: ["Фінансовий", "Операційний", "Аналітичний"]), isRequired: true),
+                        FormField(title: "Період", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Звіт про виконану роботу."
+                ),
+                DocumentTemplate(
+                    templateName: "Акт",
+                    iconName: "doc.on.doc.fill",
+                    requiredFields: [
+                        FormField(title: "Тип акту", type: .dropdown(options: ["Приймання-передачі", "Інвентаризації", "Обстеження"]), isRequired: true),
+                        FormField(title: "Дата складання", type: .date, isRequired: true),
+                        FormField(title: "Комісія", type: .text, isRequired: true)
+                    ],
+                    description: "Акт приймання або стану."
+                ),
+                DocumentTemplate(
+                    templateName: "Довідка",
+                    iconName: "info.circle.fill",
+                    requiredFields: [
+                        FormField(title: "Тип довідки", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Адресат", type: .text, isRequired: true)
+                    ],
+                    description: "Службова довідка."
+                ),
+                DocumentTemplate(
+                    templateName: "Доручення",
+                    iconName: "arrowshape.turn.up.right.fill",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true),
+                        FormField(title: "Термін", type: .date, isRequired: true),
+                        FormField(title: "Контроль", type: .toggle, isRequired: false)
+                    ],
+                    description: "Доручення керівника."
+                ),
+                DocumentTemplate(
+                    templateName: "Розпорядження",
+                    iconName: "list.bullet",
+                    requiredFields: [
+                        FormField(title: "Назва", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                    ],
+                    description: "Розпорядження керівника."
+                ),
+                DocumentTemplate(
+                    templateName: "Протокол",
+                    iconName: "doc.on.doc",
+                    requiredFields: [
+                        FormField(title: "Тип засідання", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Голова", type: .text, isRequired: true)
+                    ],
+                    description: "Протокол засідання."
+                ),
+                DocumentTemplate(
+                    templateName: "План",
+                    iconName: "calendar",
+                    requiredFields: [
+                        FormField(title: "Назва плану", type: .text, isRequired: true),
+                        FormField(title: "Період", type: .text, isRequired: true),
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true)
+                    ],
+                    description: "Робочий або стратегічний план."
+                ),
+                DocumentTemplate(
+                    templateName: "Положення",
+                    iconName: "book.pages",
+                    requiredFields: [
+                        FormField(title: "Назва", type: .text, isRequired: true),
+                        FormField(title: "Дата затвердження", type: .date, isRequired: true)
+                    ],
+                    description: "Положення про підрозділ."
+                ),
+                DocumentTemplate(
+                    templateName: "Інструкція",
+                    iconName: "book",
+                    requiredFields: [
+                        FormField(title: "Назва інструкції", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Інструкція з певного виду діяльності."
+                ),
+                DocumentTemplate(
+                    templateName: "Рапорт",
+                    iconName: "bubble.left.and.bubble.right",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Рапорт."
+                ),
+                DocumentTemplate(
+                    templateName: "Телеграма",
+                    iconName: "envelope",
+                    requiredFields: [
+                        FormField(title: "Адресат", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Категорія", type: .dropdown(options: ["Звичайна", "Термінова"]), isRequired: true)
+                    ],
+                    description: "Телеграма."
+                ),
+                DocumentTemplate(
+                    templateName: "Службовий акт",
+                    iconName: "doc.text.magnifyingglass",
+                    requiredFields: [
+                        FormField(title: "Тип", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Службовий акт."
+                ),
+                DocumentTemplate(
+                    templateName: "Програма",
+                    iconName: "list.star",
+                    requiredFields: [
+                        FormField(title: "Назва програми", type: .text, isRequired: true),
+                        FormField(title: "Період", type: .text, isRequired: true)
+                    ],
+                    description: "Програма дій."
+                ),
+                DocumentTemplate(
+                    templateName: "Припис",
+                    iconName: "arrow.right.doc",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Припис."
+                ),
+                // (можна додати Історичний формуляр / Формуляр військової частини / Правила / Алгоритм за потреби)
             ]
         ),
+
+        // MARK: - Постанова КМУ №55
         TemplateCategory(
-            categoryName: "Постанова №55",
-            iconName: "note.text",
+            categoryName: "Постанова КМУ №55",
+            iconName: "building.columns.fill",
             templates: [
                 DocumentTemplate(
                     templateName: "Звернення громадян",
                     iconName: "megaphone.fill",
                     requiredFields: [
-                        FormField(title: "Subject", type: .text, isRequired: true),
-                        FormField(title: "Date", type: .date, isRequired: true),
-                        FormField(
-                            title: "Target Department",
-                            type: .dropdown(options: [
-                                "All Company", "Engineering", "Sales", "Executive",
-                            ]), isRequired: true),
+                        FormField(title: "ПІБ громадянина", type: .text, isRequired: true),
+                        FormField(title: "Дата звернення", type: .date, isRequired: true),
+                        FormField(title: "Тема", type: .text, isRequired: true)
                     ],
-                    description: "Official internal announcement from Maxim Sokhatsky."
+                    description: "Звернення громадян."
+                ),
+                DocumentTemplate(
+                    templateName: "Резолюція",
+                    iconName: "checkmark.circle.fill",
+                    requiredFields: [
+                        FormField(title: "Номер документа", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Текст резолюції", type: .text, isRequired: true),
+                        FormField(title: "Виконавець", type: .text, isRequired: true)
+                    ],
+                    description: "Резолюція керівника."
+                ),
+                DocumentTemplate(
+                    templateName: "Автозадача",
+                    iconName: "clock.arrow.circlepath",
+                    requiredFields: [
+                        FormField(title: "Назва задачі", type: .text, isRequired: true),
+                        FormField(title: "Термін", type: .datetime, isRequired: true)
+                    ],
+                    description: "Автоматично створена задача."
+                ),
+                DocumentTemplate(
+                    templateName: "Задача контролю",
+                    iconName: "target",
+                    requiredFields: [
+                        FormField(title: "Назва", type: .text, isRequired: true),
+                        FormField(title: "Термін контролю", type: .date, isRequired: true),
+                        FormField(title: "Відповідальний", type: .text, isRequired: true)
+                    ],
+                    description: "Задача на контролі."
+                ),
+                DocumentTemplate(
+                    templateName: "Задача до відома",
+                    iconName: "eye.fill",
+                    requiredFields: [
+                        FormField(title: "Назва", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Інформація до відома."
+                ),
+                DocumentTemplate(
+                    templateName: "Вхідний документ",
+                    iconName: "tray.and.arrow.down.fill",
+                    requiredFields: [
+                        FormField(title: "Номер вхідний", type: .text, isRequired: true),
+                        FormField(title: "Дата отримання", type: .date, isRequired: true),
+                        FormField(title: "Відправник", type: .text, isRequired: true)
+                    ],
+                    description: "Зареєстрований вхідний документ."
+                ),
+                DocumentTemplate(
+                    templateName: "Вихідний документ",
+                    iconName: "paperplane.fill",
+                    requiredFields: [
+                        FormField(title: "Номер вихідний", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Отримувач", type: .text, isRequired: true)
+                    ],
+                    description: "Вихідний документ."
+                ),
+                DocumentTemplate(
+                    templateName: "Документ СЕВ",
+                    iconName: "network",
+                    requiredFields: [
+                        FormField(title: "Номер", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
+                    ],
+                    description: "Документ системи електронної взаємодії."
+                ),
+                DocumentTemplate(
+                    templateName: "Документ Email",
+                    iconName: "envelope.fill",
+                    requiredFields: [
+                        FormField(title: "Тема", type: .text, isRequired: true),
+                        FormField(title: "Дата", type: .datetime, isRequired: true),
+                        FormField(title: "Відправник", type: .text, isRequired: true)
+                    ],
+                    description: "Електронний лист."
                 ),
                 DocumentTemplate(
                     templateName: "Внутрішній документ",
                     iconName: "exclamationmark.shield.fill",
                     requiredFields: [
-                        FormField(
-                            title: "Incident Type",
-                            type: .searchDropdown(options: [
-                                "Data Breach", "DDoS Attack", "Malware", "Phishing",
-                            ]), isRequired: true),
-                        FormField(title: "Time Detected", type: .datetime, isRequired: true),
-                        FormField(
-                            title: "Severity",
-                            type: .dropdown(options: ["Low", "Medium", "High", "Critical"]),
-                            isRequired: true),
-                        FormField(title: "Resolved", type: .toggle, isRequired: false),
+                        FormField(title: "Тип", type: .searchDropdown(options: ["Наказ", "Звіт", "Довідка"]), isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true)
                     ],
-                    description: "Internal report for tracking security breaches."
+                    description: "Внутрішній документ організації."
                 ),
+                DocumentTemplate(
+                    templateName: "Організаційно-розпорядчий документ",
+                    iconName: "folder.badge.plus",
+                    requiredFields: [
+                        FormField(title: "Вид документа", type: .dropdown(options: ["Наказ", "Розпорядження", "Протокол"]), isRequired: true),
+                        FormField(title: "Дата", type: .date, isRequired: true),
+                        FormField(title: "Назва", type: .text, isRequired: true)
+                    ],
+                    description: "Організаційно-розпорядчий документ."
+                )
             ]
-        ),
+        )
     ]
 }
